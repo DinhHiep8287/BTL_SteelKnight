@@ -70,6 +70,14 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2-2.26.2\include;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_ttf-2.0.12\include;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_mixer-2.0.0\include;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_image-2.0.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_mixer-2.0.0\lib\x64;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_ttf-2.0.12\lib\x64;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2-2.26.2\lib\x64;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_image-2.0.0\lib\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2-2.26.2\include;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_ttf-2.0.12\include;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_mixer-2.0.0\include;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_image-2.0.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_mixer-2.0.0\lib\x64;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_ttf-2.0.12\lib\x64;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2-2.26.2\lib\x64;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_image-2.0.0\lib\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -110,7 +118,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2-2.26.2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2main.lib;SDL2test.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2.lib;SDL2main.lib;SDL2test.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -129,15 +137,19 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2-2.26.2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2main.lib;SDL2test.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2.lib;SDL2main.lib;SDL2test.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="SDL_utils.cpp" />
+    <ClCompile Include="Engine.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SDL_utils.h" />
+    <ClInclude Include="Engine.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\OneDrive\Máy tính\background.png" />
+    <Image Include="..\..\..\..\OneDrive\Máy tính\collectionForProject\knightStand.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
