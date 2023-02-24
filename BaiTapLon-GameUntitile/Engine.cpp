@@ -13,6 +13,8 @@ const int SIZE = 25;
 const int SCREEN_WIDTH = 1250; //32 * SIZE;
 const int SCREEN_HEIGHT = 732; //16 * SIZE;
 const string WINDOW_TITLE = "UntiledGame";
+
+
 void logSDLError(std::ostream& os,
     const std::string& msg, bool fatal)
 {
@@ -97,4 +99,11 @@ void draw(SDL_Texture* texture, SDL_Renderer* renderer, int x, int y, int width 
     SDL_Rect dstrect = { x , y , width , height };
     SDL_RenderCopyEx(renderer, texture, &srcrect, &dstrect, 0, NULL, flip);
 }
-
+// Vẽ từng khung hình của một Sprite 
+void drawFrame(SDL_Texture* texture, SDL_Renderer* renderer, int x, int y, int width, int height, int row , int frame , SDL_RendererFlip flip)
+{
+    // Tọa độ của 1 source frame sẽ được xác định bởi x = Chiều Dài 1 frame * thứ tự frame ; y = Chiều cao 1 frame * thứ tự cột
+    SDL_Rect srcrect = { width*frame , height*row , width , height };
+    SDL_Rect dstrect = { x , y , width , height };
+    SDL_RenderCopyEx(renderer, texture, &srcrect, &dstrect, 0, NULL, flip);
+}
