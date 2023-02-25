@@ -15,23 +15,24 @@ using namespace std;
 
 Knight::Knight(All* all) : MainCharacter(all)
 {
-    int _row = 0, _frame, _frameCount = 10, _frameDelay;
+    int _row , _AnimationSpeed  ;
+    int _frameCount  , _frame ;
 }
 
 
 
-void drawObject(SDL_Renderer* renderer , SDL_Texture* texture)
+void Knight::drawObject(SDL_Renderer* renderer , SDL_Texture* texture)
 {
-    
+    drawFrame(texture, renderer, O_tranform->vector.x, O_tranform->vector.y, O_width, O_height ,_row , _frame);
 }
 
-void updateObject()
+void Knight::updateObject()
 {
-
+    _frame = (SDL_GetTicks() / _AnimationSpeed) % _frameCount;
 }
 
-void cleanObject()
+void Knight::cleanObject(SDL_Texture* texture)
 {
-
+    SDL_DestroyTexture(texture);
 }
 

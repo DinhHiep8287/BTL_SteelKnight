@@ -24,8 +24,6 @@ class MainCharacter : public Object
 
 public : MainCharacter(All* all) : Object(all) {}
        
-      
-
        void drawObject();
        void updateObject();
        void cleanObject();

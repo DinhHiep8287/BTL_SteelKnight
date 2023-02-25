@@ -9,10 +9,9 @@
 #include <random>
 using namespace std;
 #include "Engine.h"
-#include "Vector2D.h" 
-#include "Transform.h"
 #include "Object.h"
-#include "MainCharacter.h"
+#include "Knight.h"
+
 
 const int S = 25;
 const int SCREEN_WIDTH = 32 * S;
@@ -26,35 +25,24 @@ int main(int argc, char* argv[])
 	SDL_Renderer* renderer;
 	SDL_Window* window;
 	initSDL(window, renderer);
-	
+    // SOURCE PICTURE
+    SDL_Texture* background = loadTexture("background.png", renderer);
+    SDL_Texture* KnightRun = loadTexture("_Run.png", renderer);
+
+    // KHỞI TẠO
+    All* all = new All(KnightRun, 200, 200, textureWidth(KnightRun)/10 , textureHeight(KnightRun) );
+    Knight* player = new Knight(all);
     
-
-
-	SDL_Texture* background = loadTexture("background.png", renderer);
-	SDL_Texture* KnightStand = loadTexture("knightStand.png", renderer);
-
-    string str;
-    All* all = new All(str, 200, 200, 200, 200);
-    
-    MainCharacter main(all);
-    
-
-
+    //cout << player->_frameCount << " " << player->_row;
+    // GAME LOOP
 	bool quit = 0;
 	while (quit == 0)
 	{	
 
-		//SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-		//SDL_RenderClear(renderer);
-		//SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-		//wall.render(renderer);
-		//SDL_RenderPresent(renderer);
-
+	    // EVENT
 		while (SDL_PollEvent(&e) != 0)
 		{
-			SDL_RenderCopy(renderer, background, NULL, NULL);
-            draw(KnightStand, renderer, 200, 200 , textureWidth(KnightStand) , textureHeight(KnightStand) );
-            SDL_RenderPresent(renderer);
+			
 			if (e.type == SDL_QUIT)
 			{
 				quit = 1;
@@ -72,6 +60,18 @@ int main(int argc, char* argv[])
 				}
 			}
 		}
+        // UPDATE
+
+        player->updateObject();
+        cout << player->O_tranform->vector.x << " " << player->O_tranform->vector.y << " " << player->O_width << " " << player->O_height << " " << player->_frame << " " << player->_frameCount << " " << player->_row << endl;
+        // RENDER
+        SDL_RenderCopy(renderer, background, NULL, NULL);
+        player->drawObject(renderer, KnightRun);
+        
+        SDL_RenderPresent(renderer);
+
+
+        //END
 	}
 
     

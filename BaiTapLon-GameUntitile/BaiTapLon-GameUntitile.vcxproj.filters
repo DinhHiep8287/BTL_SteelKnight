@@ -1,53 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Physic">
-      <UniqueIdentifier>{fc629efe-ee60-47d4-bac7-ebcd9275130c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Object">
-      <UniqueIdentifier>{766a78c8-ad15-4075-9013-beb7afc76aef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Object\Knight">
-      <UniqueIdentifier>{a4ce5902-92cf-47e7-b5eb-2963d47b0c72}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\Art">
       <UniqueIdentifier>{f3d195b6-6c69-4dbc-a1db-f5b45681d5bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Physic">
+      <UniqueIdentifier>{fc629efe-ee60-47d4-bac7-ebcd9275130c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Object">
+      <UniqueIdentifier>{766a78c8-ad15-4075-9013-beb7afc76aef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Object\Knight">
+      <UniqueIdentifier>{a4ce5902-92cf-47e7-b5eb-2963d47b0c72}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Resource Files\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Resource Files\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Knight.cpp">
-      <Filter>Source Files\Object\Knight</Filter>
+      <Filter>Resource Files\Source Files\Object\Knight</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector2D.h">
-      <Filter>Source Files\Physic</Filter>
+      <Filter>Resource Files\Source Files\Physic</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h">
-      <Filter>Source Files\Physic</Filter>
+      <Filter>Resource Files\Source Files\Physic</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
-      <Filter>Source Files\Object</Filter>
+      <Filter>Resource Files\Source Files\Object</Filter>
     </ClInclude>
     <ClInclude Include="MainCharacter.h">
-      <Filter>Source Files\Object</Filter>
+      <Filter>Resource Files\Source Files\Object</Filter>
     </ClInclude>
     <ClInclude Include="Knight.h">
-      <Filter>Source Files\Object\Knight</Filter>
+      <Filter>Resource Files\Source Files\Object\Knight</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -56,6 +56,12 @@
     </Image>
     <Image Include="..\..\..\..\OneDrive\Máy tính\background.png">
       <Filter>Resource Files\Art</Filter>
+    </Image>
+    <Image Include="..\..\..\..\OneDrive\Máy tính\FreeKnight_v1\Colour1\Outline\120x80_PNGSheets\_Run.png">
+      <Filter>Resource Files\Source Files\Object\Knight</Filter>
+    </Image>
+    <Image Include="_Run.png">
+      <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
 </Project>

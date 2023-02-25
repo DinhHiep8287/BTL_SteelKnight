@@ -15,12 +15,12 @@ using namespace std;
 // struct All lưu thông tin gồm : texture , tọa độ , độ cao dài , hướng texture 
 struct All
 {
-    string texture;
+    SDL_Texture* texture;
     float x, y, width, height;
     SDL_RendererFlip flip;
 
 
-    All(string _texture, float _x, float _y, float _width, float _height, SDL_RendererFlip _flip = SDL_FLIP_NONE)
+    All(SDL_Texture* _texture, float _x, float _y, float _width, float _height, SDL_RendererFlip _flip = SDL_FLIP_NONE)
     {
         texture = _texture;
         x = _x;
@@ -34,12 +34,13 @@ class Object
 {
 public : Transform* O_tranform;
        float O_width, O_height;
-       string O_texture;
+       SDL_Texture* O_texture;
        SDL_RendererFlip O_flip;
 
        Object(All* all)
        {
            O_texture = all->texture;
+           O_width = all->width;
            O_height = all->height;
            O_flip = all->flip;
            O_tranform = new Transform(all->x, all->y);

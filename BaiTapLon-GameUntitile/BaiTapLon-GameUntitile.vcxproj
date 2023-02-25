@@ -155,6 +155,8 @@
   <ItemGroup>
     <Image Include="..\..\..\..\OneDrive\Máy tính\background.png" />
     <Image Include="..\..\..\..\OneDrive\Máy tính\collectionForProject\knightStand.png" />
+    <Image Include="..\..\..\..\OneDrive\Máy tính\FreeKnight_v1\Colour1\Outline\120x80_PNGSheets\_Run.png" />
+    <Image Include="_Run.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
