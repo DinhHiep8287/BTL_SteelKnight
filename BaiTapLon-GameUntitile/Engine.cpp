@@ -80,27 +80,27 @@ SDL_Texture* loadTexture(std::string path, SDL_Renderer* renderer)
 }
 
 
-int textureWidth(SDL_Texture* texture)
+float textureWidth(SDL_Texture* texture)
 {
     SDL_Rect rect1 ;
     SDL_QueryTexture(texture, NULL, NULL, &rect1.w, &rect1.h);
     return rect1.w;
 }
-int textureHeight(SDL_Texture* texture)
+float textureHeight(SDL_Texture* texture)
 {
     SDL_Rect rect1 ;
     SDL_QueryTexture(texture, NULL, NULL, &rect1.w , &rect1.h );
     return rect1.h;
 }
 
-void draw(SDL_Texture* texture, SDL_Renderer* renderer, int x, int y, int width , int height, SDL_RendererFlip flip)
+void draw(SDL_Texture* texture, SDL_Renderer* renderer, float x, float y, float width , float height, SDL_RendererFlip flip)
 {
     SDL_Rect srcrect = { 0 , 0 , width , height };
     SDL_Rect dstrect = { x , y , width , height };
     SDL_RenderCopyEx(renderer, texture, &srcrect, &dstrect, 0, NULL, flip);
 }
 // Vẽ từng khung hình của một Sprite 
-void drawFrame(SDL_Texture* texture, SDL_Renderer* renderer, int x, int y, int width, int height, int row , int frame , SDL_RendererFlip flip )
+void drawFrame(SDL_Texture* texture, SDL_Renderer* renderer, float x, float y, float width, float height, int row , int frame , SDL_RendererFlip flip )
 {
     // Tọa độ của 1 source frame sẽ được xác định bởi x = Chiều Dài 1 frame * thứ tự frame ; y = Chiều cao 1 frame * thứ tự cột
     SDL_Rect srcrect = { width*frame , height*row , width , height };

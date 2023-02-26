@@ -11,17 +11,17 @@
 using namespace std;
 #include "Transform.h"
 #include "Vector2D.h"
-
+#include "Body.h"
 // struct All lưu thông tin gồm : texture , tọa độ , độ cao dài , hướng texture 
 struct All
 {
     SDL_Texture* texture;
-    int x, y;
-    int width, height;
+    float x, y;
+    float width, height;
     SDL_RendererFlip flip;
+    Body* body;
 
-
-    All(SDL_Texture* _texture, int _x, int _y, int _width, int _height, SDL_RendererFlip _flip = SDL_FLIP_NONE)
+    All(SDL_Texture* _texture, float _x, float _y, float _width, float _height, SDL_RendererFlip _flip = SDL_FLIP_NONE)
     {
         texture = _texture;
         x = _x;
@@ -34,7 +34,7 @@ struct All
 class Object
 {
 public : Transform* O_tranform;
-       int O_width, O_height;
+       float O_width, O_height;
        SDL_Texture* O_texture;
        SDL_RendererFlip O_flip;
 
@@ -46,10 +46,8 @@ public : Transform* O_tranform;
            O_flip = all->flip;
            O_tranform = new Transform(all->x, all->y);
        }
-       void drawObject()
-       {
-           
-       }
+      
+       void drawObject();
        void updateObject();
        void cleanObject();  
 };

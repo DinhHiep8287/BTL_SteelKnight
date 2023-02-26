@@ -17,18 +17,18 @@ class Transform
 {
 public: Vector2D vector;
         
-      Transform(){}
-      Transform(int _x, int _y)
+      Transform() { vector.x = 0; vector.y = 0; }
+      Transform(float _x, float _y)
       {
           vector.x = _x;
           vector.y = _y;
       }
 
-    void moveX(int stepX)
+    void moveX(float stepX)
     {
         vector.x += stepX;
     }
-    void moveY(int stepY)
+    void moveY(float stepY)
     {
         vector.y += stepY;
     }

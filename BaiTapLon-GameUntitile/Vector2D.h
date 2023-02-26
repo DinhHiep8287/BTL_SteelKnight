@@ -12,12 +12,12 @@ using namespace std;
 // class chứa tọa độ của 1 object
 class Vector2D
 {
-public: int x; int y; 
+public: float x; float y; 
     Vector2D()
     {
         x = 0; y = 0; 
     }
-    Vector2D(int _x, int _y)
+    Vector2D(float _x, float _y)
     {
         x = _x;
         y = _y;
@@ -40,7 +40,7 @@ public: int x; int y;
         return res;
     }
     // nhân vector
-    Vector2D operator*(const int c)
+    Vector2D operator*(const float c)
     {
         Vector2D res;
         res.x = x * c;

@@ -19,8 +19,8 @@ void quitSDL(SDL_Window* window , SDL_Renderer* renderer);
 
 void waitUntilKeyPressed();
 SDL_Texture* loadTexture(std::string path, SDL_Renderer* renderer);
-int textureWidth(SDL_Texture* texture);
-int textureHeight(SDL_Texture* texture);
-void draw(SDL_Texture* texture, SDL_Renderer* renderer, int x, int y, int width, int height, SDL_RendererFlip = SDL_FLIP_NONE);
-void drawFrame(SDL_Texture* texture, SDL_Renderer* renderer, int x, int y, int width, int height, int row, int frame, SDL_RendererFlip flip = SDL_FLIP_NONE);
+float textureWidth(SDL_Texture* texture);
+float textureHeight(SDL_Texture* texture);
+void draw(SDL_Texture* texture, SDL_Renderer* renderer, float x, float y, float width, float height, SDL_RendererFlip = SDL_FLIP_NONE);
+void drawFrame(SDL_Texture* texture, SDL_Renderer* renderer, float x, float y, float width, float height, int row, int frame, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
