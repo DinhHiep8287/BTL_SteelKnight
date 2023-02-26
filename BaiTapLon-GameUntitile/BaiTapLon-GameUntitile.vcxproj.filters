@@ -21,6 +21,9 @@
     <Filter Include="Resource Files\Source Files\Object\Knight">
       <UniqueIdentifier>{a4ce5902-92cf-47e7-b5eb-2963d47b0c72}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Process">
+      <UniqueIdentifier>{b3269963-8ab1-4f6b-b6d8-04ba8f69cf9e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -48,6 +51,9 @@
     </ClInclude>
     <ClInclude Include="Knight.h">
       <Filter>Resource Files\Source Files\Object\Knight</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

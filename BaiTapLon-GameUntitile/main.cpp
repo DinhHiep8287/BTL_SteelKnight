@@ -26,14 +26,13 @@ int main(int argc, char* argv[])
 	SDL_Window* window;
 	initSDL(window, renderer);
     // SOURCE PICTURE
-    SDL_Texture* background = loadTexture("background.png", renderer);
-    SDL_Texture* KnightRun = loadTexture("_Run.png", renderer);
+    SDL_Texture* background = loadTexture("Art//background.png", renderer);
+    SDL_Texture* KnightRun = loadTexture("Art//_Run.png", renderer);
 
     // KHỞI TẠO
     All* all = new All(KnightRun, 200, 200, textureWidth(KnightRun)/10 , textureHeight(KnightRun) );
     Knight* player = new Knight(all);
     
-    //cout << player->_frameCount << " " << player->_row;
     // GAME LOOP
 	bool quit = 0;
 	while (quit == 0)
@@ -42,7 +41,8 @@ int main(int argc, char* argv[])
 	    // EVENT
 		while (SDL_PollEvent(&e) != 0)
 		{
-			
+        
+
 			if (e.type == SDL_QUIT)
 			{
 				quit = 1;
@@ -54,6 +54,14 @@ int main(int argc, char* argv[])
 				{
 				case SDLK_ESCAPE: quit = 1;
 					break;
+                case SDLK_a: cout << "Push a " << endl;
+                    break;
+                case SDLK_s:cout << "Push b " << endl;
+                    break;
+                case SDLK_w: cout << "Push w" << endl;
+                    break; 
+                case SDLK_d: cout << "Push d " << endl;
+                    break;
 
 				default:
 					break;
@@ -61,13 +69,14 @@ int main(int argc, char* argv[])
 			}
 		}
         // UPDATE
-
         player->updateObject();
-        cout << player->O_tranform->vector.x << " " << player->O_tranform->vector.y << " " << player->O_width << " " << player->O_height << " " << player->_frame << " " << player->_frameCount << " " << player->_row << endl;
+
+        //cout << player->O_tranform->vector.x << " " << player->O_tranform->vector.y << " " << player->O_width << " " << player->O_height << " " << player->animationRun->frame << " " << player->animationRun->frameCount << " " << player->animationRun->row << endl;
+        
         // RENDER
         SDL_RenderCopy(renderer, background, NULL, NULL);
         player->drawObject(renderer, KnightRun);
-        
+        //drawFrame(KnightRun , renderer , 200 , 200 , 200 , 200 , )
         SDL_RenderPresent(renderer);
 
 

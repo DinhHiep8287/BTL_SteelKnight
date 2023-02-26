@@ -16,11 +16,12 @@ using namespace std;
 struct All
 {
     SDL_Texture* texture;
-    float x, y, width, height;
+    int x, y;
+    int width, height;
     SDL_RendererFlip flip;
 
 
-    All(SDL_Texture* _texture, float _x, float _y, float _width, float _height, SDL_RendererFlip _flip = SDL_FLIP_NONE)
+    All(SDL_Texture* _texture, int _x, int _y, int _width, int _height, SDL_RendererFlip _flip = SDL_FLIP_NONE)
     {
         texture = _texture;
         x = _x;
@@ -33,7 +34,7 @@ struct All
 class Object
 {
 public : Transform* O_tranform;
-       float O_width, O_height;
+       int O_width, O_height;
        SDL_Texture* O_texture;
        SDL_RendererFlip O_flip;
 
