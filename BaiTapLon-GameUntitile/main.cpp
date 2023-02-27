@@ -9,10 +9,11 @@
 #include <random>
 using namespace std;
 #include "Engine.h"
-#include "Object.h"
 #include "Knight.h"
 #include "Game.h"
 #include "Input.h"
+#include "Time.h"
+#include "TextureManage.h"
 const int S = 25;
 const int SCREEN_WIDTH = 32 * S;
 const int SCREEN_HEIGHT = 16 * S;
@@ -24,31 +25,30 @@ time_t t;
 int main(int argc, char* argv[])
 {
     // KHỞI TẠO
-    SDL_Window* window;
-    SDL_Renderer* renderer;
-    initSDL(window, renderer);
-    bool _isRunning = true;
-    bool* isRunning = &_isRunning; 
-    SDL_Texture* KnightIdie = loadTexture("Art//Knight//idle.png", renderer);
-    SDL_Texture* background = loadTexture("Art//WhiteBackground.png", renderer);
-    All* all = new All(KnightIdie, 500 , 400 , textureWidth(KnightIdie)/11 , textureHeight(KnightIdie) );
-    Knight* player = new Knight(all);
-    while (*isRunning)
-    {
-        //Event
-        Input::getInstance()->listen(isRunning);
-        //Update
-        player->updateObject(isRunning,renderer);
-        //player->O_tranform->vector.print(" player : ");
+    Game::GetInstance()->init();
 
-        //Renderer
-        SDL_RenderCopy(renderer, background, NULL, NULL);
-        player->drawObject(renderer, player->animation );
-        SDL_RenderPresent(renderer);
-        //player->cleanObject(player->animation->texture);
+
+    // GAMELOOP
+    while (Game::GetInstance()->isRunning())
+    {
+        Game::GetInstance()->event();
+        Game::GetInstance()->update();
+        Game::GetInstance()->render();
+        Time::getIntance()->Tick();
+
+
+        ////Event
+        //Input::getInstance()->listen();
+        ////Update
+        ////Renderer
+        //SDL_RenderCopy(renderer, background, NULL, NULL);
+        //player->drawObject(renderer, player->animation );
+        //SDL_RenderPresent(renderer);
+        //SDL_DestroyTexture(player->animation->texture);
+        //Time::getIntance()->Tick();
     }
 
-
+    Game::GetInstance()->cleanSDL();
 
 
 

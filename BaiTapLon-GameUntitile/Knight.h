@@ -9,8 +9,8 @@ public :    Knight(All* all);
             Animation* animation;
             Body* body ;
 
-      void drawObject(SDL_Renderer* renderer , Animation* animation );
-      void updateObject(bool *isRunning , SDL_Renderer* renderer);
+      void drawObject( Animation* animation );
+      void updateObject(float dt);
       void cleanObject(SDL_Texture* texture);
 };
 

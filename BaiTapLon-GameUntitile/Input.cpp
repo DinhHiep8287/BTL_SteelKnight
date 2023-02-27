@@ -1,11 +1,12 @@
 #include "Input.h"
+#include "Game.h"
 Input* Input::_intance = nullptr;
 Input::Input()
 {
     _keyStates = SDL_GetKeyboardState(nullptr);
 }
 
-void Input::listen(bool *isRunning)
+void Input::listen()
 {
     SDL_Event e;
     while (SDL_PollEvent(&e))
@@ -13,7 +14,7 @@ void Input::listen(bool *isRunning)
         switch (e.type)
         {
         case SDL_QUIT: 
-            *isRunning = false;
+            Game::GetInstance()->quit();
             break;
         case SDL_KEYDOWN: keyDown();
             break;

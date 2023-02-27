@@ -1,26 +1,26 @@
 #pragma once
 #include "Engine.h"
-
+#include "TextureManage.h"
 class Animation
 {   
-public: SDL_Texture* texture ; 
+public: string id ; 
       SDL_RendererFlip flip  ; 
       int row; 
       int AnimationSpeed; 
       int frameCount; 
       int frame;
     
-    Animation(SDL_Texture* _texture, SDL_RendererFlip _flip, int _row, int _AnimationSpeed, int _frameCount, int _frame){
-        texture = _texture;
+    Animation(string _id , SDL_RendererFlip _flip, int _row, int _AnimationSpeed, int _frameCount, int _frame){
+        id = _id;
         flip = _flip;
         row = _row;
         AnimationSpeed = _AnimationSpeed;
         frameCount = _frameCount;
         frame = _frame;
     }
-    void SetAnimation(SDL_Texture* _texture, SDL_RendererFlip _flip, int _row, int _AnimationSpeed, int _frameCount, int _frame)
+    void SetAnimation(string _id, SDL_RendererFlip _flip, int _row, int _AnimationSpeed, int _frameCount, int _frame)
     {
-        texture = _texture;
+        id = _id;
         flip = _flip;
         row = _row;
         AnimationSpeed = _AnimationSpeed;
@@ -33,9 +33,9 @@ public: SDL_Texture* texture ;
         frame = (SDL_GetTicks() / AnimationSpeed) % frameCount;
     }
 
-    void DrawAnimation(SDL_Renderer* renderer, SDL_Texture* texture , float x , float y , int width , int height , SDL_RendererFlip flip)
+    void DrawAnimation(string id , float x , float y , int width , int height ,SDL_RendererFlip flip)
     {
-        drawFrame(texture, renderer, x , y  , width , height, row, frame , flip );
+        TextureManage::GetInstance()->drawFrame( id , x, y, width, height, row, frame, flip);
         //cout << "draw : " << x << " " << y << endl;
     }
 };

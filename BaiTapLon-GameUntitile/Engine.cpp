@@ -47,17 +47,6 @@ void quitSDL(SDL_Window* window, SDL_Renderer* renderer)
     SDL_Quit();
 }
 
-void waitUntilKeyPressed()
-{
-    SDL_Event e;
-    while (true) {
-        if (SDL_WaitEvent(&e) != 0 &&
-            (e.type == SDL_KEYDOWN || e.type == SDL_QUIT))
-            return;
-        SDL_Delay(100);
-
-    }
-}
 SDL_Texture* loadTexture(std::string path, SDL_Renderer* renderer)
 {
     SDL_Texture* newTexture = NULL;
@@ -80,18 +69,7 @@ SDL_Texture* loadTexture(std::string path, SDL_Renderer* renderer)
 }
 
 
-float textureWidth(SDL_Texture* texture)
-{
-    SDL_Rect rect1 ;
-    SDL_QueryTexture(texture, NULL, NULL, &rect1.w, &rect1.h);
-    return rect1.w;
-}
-float textureHeight(SDL_Texture* texture)
-{
-    SDL_Rect rect1 ;
-    SDL_QueryTexture(texture, NULL, NULL, &rect1.w , &rect1.h );
-    return rect1.h;
-}
+
 
 void draw(SDL_Texture* texture, SDL_Renderer* renderer, float x, float y, float width , float height, SDL_RendererFlip flip)
 {

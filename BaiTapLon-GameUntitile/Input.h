@@ -11,7 +11,7 @@ public: Input();
            return _intance = (_intance != nullptr) ? _intance : new Input();
        }
 
-       void listen(bool *isRunning);
+       void listen();
        bool getKeyDown(SDL_Scancode key);
 
        void keyUp();

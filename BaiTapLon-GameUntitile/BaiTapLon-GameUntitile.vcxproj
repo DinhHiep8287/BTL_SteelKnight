@@ -150,6 +150,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="TextureManage.cpp" />
+    <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -159,6 +161,8 @@
     <ClInclude Include="Knight.h" />
     <ClInclude Include="MainCharacter.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="TextureManage.h" />
+    <ClInclude Include="Time.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>

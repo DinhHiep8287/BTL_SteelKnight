@@ -21,22 +21,31 @@
     <Filter Include="Resource Files\Process">
       <UniqueIdentifier>{b3269963-8ab1-4f6b-b6d8-04ba8f69cf9e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Source Files\Core">
+      <UniqueIdentifier>{05c5648b-69cf-4b29-984b-09f10f1d0b5f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Resource Files\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine.cpp">
-      <Filter>Resource Files\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Knight.cpp">
       <Filter>Resource Files\Source Files\Object\Knight</Filter>
     </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>Resource Files\Source Files</Filter>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Resource Files\Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>Resource Files\Source Files</Filter>
+      <Filter>Resource Files\Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Resource Files\Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Resource Files\Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManage.cpp">
+      <Filter>Resource Files\Source Files\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -59,13 +68,19 @@
       <Filter>Resource Files\Source Files\Physic</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>Resource Files\Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>Resource Files\Source Files</Filter>
+      <Filter>Resource Files\Source Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
-      <Filter>Resource Files\Source Files</Filter>
+      <Filter>Resource Files\Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Resource Files\Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Resource Files\Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManage.h">
+      <Filter>Resource Files\Source Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
