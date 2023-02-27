@@ -30,6 +30,16 @@ struct All
         height = _height;
         flip = _flip;
     }
+
+    void SetAll(SDL_Texture* _texture, float _x, float _y, float _width, float _height, SDL_RendererFlip _flip = SDL_FLIP_NONE)
+    {
+        texture = _texture;
+        x = _x;
+        y = _y;
+        width = _width;
+        height = _height;
+        flip = _flip;
+    }
 };
 class Object
 {

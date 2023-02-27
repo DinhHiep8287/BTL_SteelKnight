@@ -32,6 +32,12 @@
     <ClCompile Include="Knight.cpp">
       <Filter>Resource Files\Source Files\Object\Knight</Filter>
     </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Resource Files\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Resource Files\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector2D.h">
@@ -49,11 +55,17 @@
     <ClInclude Include="Knight.h">
       <Filter>Resource Files\Source Files\Object\Knight</Filter>
     </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
     <ClInclude Include="Body.h">
       <Filter>Resource Files\Source Files\Physic</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Resource Files\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Resource Files\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Resource Files\Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

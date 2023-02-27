@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BaiTapLon-GameUntitile", "BaiTapLon-GameUntitile\BaiTapLon-GameUntitile.vcxproj", "{51FD779C-BB6C-4ECB-923F-9425E446EC17}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DB540538-6206-4DAC-90EF-04CC8FE39A48}"
+	ProjectSection(SolutionItems) = preProject
+		Graph1.dgml = Graph1.dgml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

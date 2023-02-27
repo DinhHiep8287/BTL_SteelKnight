@@ -1,0 +1,22 @@
+#pragma once
+#include "SDL.h"
+#include "Engine.h"
+#include "Game.h"
+class Input 
+{
+public: Input();
+       static Input* _intance;
+       static Input* getInstance()
+       {
+           return _intance = (_intance != nullptr) ? _intance : new Input();
+       }
+
+       void listen(bool *isRunning);
+       bool getKeyDown(SDL_Scancode key);
+
+       void keyUp();
+       void keyDown();
+
+       const Uint8* _keyStates;
+};
+

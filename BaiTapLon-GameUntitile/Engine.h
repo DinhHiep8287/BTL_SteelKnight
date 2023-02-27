@@ -24,3 +24,4 @@ float textureHeight(SDL_Texture* texture);
 void draw(SDL_Texture* texture, SDL_Renderer* renderer, float x, float y, float width, float height, SDL_RendererFlip = SDL_FLIP_NONE);
 void drawFrame(SDL_Texture* texture, SDL_Renderer* renderer, float x, float y, float width, float height, int row, int frame, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
+

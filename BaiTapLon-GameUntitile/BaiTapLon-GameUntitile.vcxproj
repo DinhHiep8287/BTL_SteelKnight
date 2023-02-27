@@ -145,13 +145,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="Knight.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Body.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="Knight.h" />
     <ClInclude Include="MainCharacter.h" />
     <ClInclude Include="Object.h" />
