@@ -1,9 +1,7 @@
 #include "Game.h"
-#include "TextureManage.h" 
 Game* Game::_instance = nullptr;
 
 Knight* player = new Knight(new All("KnightIdle", 200, 200, TextureManage::GetInstance()->textureWidth("KnightIdle") / 11, TextureManage::GetInstance()->textureHeight("KnightIdle")));
-
 
 void Game::init()
 {
@@ -11,6 +9,7 @@ void Game::init()
     TextureManage::GetInstance()->load("WhiteBackground", "Art//WhiteBackground.png");
     TextureManage::GetInstance()->load("KnightIdle", "Art//Knight//idle.png");
     TextureManage::GetInstance()->load("KnightRun", "Art//Knight//Run.png");
+    TextureManage::GetInstance()->load("KnightAttack", "Art//Knight//Attack.png");
 
 }
 
@@ -21,10 +20,9 @@ void Game::quit()
 
 void Game::update()
 {
-    float dt = Time::getIntance()->getDeltaTime();
+    float dt =  1;  
     player->updateObject(dt);
     player->O_tranform->vector.print(" player : ");
-    cout << "update...";
 }
 void Game::render()
 {

@@ -1,16 +1,6 @@
 ﻿#pragma once
 #include "Object.h"
-
 #include "Engine.h"
-#include <SDL.h>
-#include <SDL_mixer.h>
-#include <SDL_ttf.h>
-#include <SDL_image.h>
-#include <iostream>
-#include <string.h>
-#include <ctime> 
-#include <cstdlib> 
-#include <random>
 // tất cả các Object character là kế thừa từ class Object
 // cứ pháp kế thừa :
 // class DuocKeThua : accessMode(public,private,...) KeThua

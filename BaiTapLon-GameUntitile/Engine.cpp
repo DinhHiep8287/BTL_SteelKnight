@@ -1,4 +1,5 @@
 ﻿#include "Engine.h"
+#include "Engine.h"
 #include <SDL.h>
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
@@ -9,12 +10,10 @@
 #include <cstdlib> 
 #include <random>
 using namespace std;
-const int SIZE = 25;
-const int SCREEN_WIDTH = 1250; //32 * SIZE;
-const int SCREEN_HEIGHT = 732; //16 * SIZE;
+const int SIZE = 16;
+const int SCREEN_WIDTH = 16 * 4 * SIZE;
+const int SCREEN_HEIGHT = 9 * 4 * SIZE;
 const string WINDOW_TITLE = "UntiledGame";
-
-
 void logSDLError(std::ostream& os,
     const std::string& msg, bool fatal)
 {
@@ -24,7 +23,6 @@ void logSDLError(std::ostream& os,
         exit(1);
     }
 }
-
 void initSDL(SDL_Window*& window, SDL_Renderer*& renderer)
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
@@ -45,43 +43,4 @@ void quitSDL(SDL_Window* window, SDL_Renderer* renderer)
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
-}
-
-SDL_Texture* loadTexture(std::string path, SDL_Renderer* renderer)
-{
-    SDL_Texture* newTexture = NULL;
-    SDL_Surface* loadedSurface = IMG_Load(path.c_str());
-    if (loadedSurface == NULL)
-    {
-        printf("Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError());
-    }
-    else
-    {
-        newTexture = SDL_CreateTextureFromSurface(renderer, loadedSurface);
-        if (newTexture == NULL)
-        {
-            printf("Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
-        }
-        SDL_FreeSurface(loadedSurface);
-    }
-
-    return newTexture;
-}
-
-
-
-
-void draw(SDL_Texture* texture, SDL_Renderer* renderer, float x, float y, float width , float height, SDL_RendererFlip flip)
-{
-    SDL_Rect srcrect = { 0 , 0 , width , height };
-    SDL_Rect dstrect = { x , y , width , height };
-    SDL_RenderCopyEx(renderer, texture, &srcrect, &dstrect, 0, NULL, flip);
-}
-// Vẽ từng khung hình của một Sprite 
-void drawFrame(SDL_Texture* texture, SDL_Renderer* renderer, float x, float y, float width, float height, int row , int frame , SDL_RendererFlip flip )
-{
-    // Tọa độ của 1 source frame sẽ được xác định bởi x = Chiều Dài 1 frame * thứ tự frame ; y = Chiều cao 1 frame * thứ tự cột
-    SDL_Rect srcrect = { width*frame , height*row , width , height };
-    SDL_Rect dstrect = { x , y , width , height };
-    SDL_RenderCopyEx(renderer, texture, &srcrect, &dstrect, 0, NULL, flip);
 }

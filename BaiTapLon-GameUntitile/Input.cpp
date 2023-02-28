@@ -1,5 +1,4 @@
 #include "Input.h"
-#include "Game.h"
 Input* Input::_intance = nullptr;
 Input::Input()
 {

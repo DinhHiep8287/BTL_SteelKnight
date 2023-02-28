@@ -41,9 +41,6 @@
     <ClCompile Include="Input.cpp">
       <Filter>Resource Files\Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Time.cpp">
-      <Filter>Resource Files\Source Files\Core</Filter>
-    </ClCompile>
     <ClCompile Include="TextureManage.cpp">
       <Filter>Resource Files\Source Files\Core</Filter>
     </ClCompile>
@@ -74,9 +71,6 @@
       <Filter>Resource Files\Source Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="Input.h">
-      <Filter>Resource Files\Source Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Time.h">
       <Filter>Resource Files\Source Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="TextureManage.h">
