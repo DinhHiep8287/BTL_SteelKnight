@@ -49,13 +49,13 @@ void Knight::updateObject(float dt)
     {
         if (dir == 0)
         {
-            animation->SetAnimation("KnightAttack", SDL_FLIP_NONE, 0, 100, 6, 0);
+          animation->SetAnimation("KnightAttack", SDL_FLIP_NONE, 0, 70, 6, 0);
             O_width = TextureManage::GetInstance()->textureWidth("KnightAttack") / animation->frameCount;
             O_height = TextureManage::GetInstance()->textureHeight("KnightAttack");
         }
         if (dir == 1)
         {
-            animation->SetAnimation("KnightAttack", SDL_FLIP_HORIZONTAL, 0, 100, 6, 0);
+            animation->SetAnimation("KnightAttack", SDL_FLIP_HORIZONTAL, 0, 70, 6, 0);
             O_width = TextureManage::GetInstance()->textureWidth("KnightAttack") / animation->frameCount;
             O_height = TextureManage::GetInstance()->textureHeight("KnightAttack");
         }

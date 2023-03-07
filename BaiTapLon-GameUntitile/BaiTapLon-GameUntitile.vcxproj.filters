@@ -9,9 +9,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Resource Files\Source Files\Physic">
-      <UniqueIdentifier>{fc629efe-ee60-47d4-bac7-ebcd9275130c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\Source Files\Object">
       <UniqueIdentifier>{766a78c8-ad15-4075-9013-beb7afc76aef}</UniqueIdentifier>
     </Filter>
@@ -23,6 +20,15 @@
     </Filter>
     <Filter Include="Resource Files\Source Files\Core">
       <UniqueIdentifier>{05c5648b-69cf-4b29-984b-09f10f1d0b5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Map">
+      <UniqueIdentifier>{95db98b4-3db3-4cc2-a02e-7e13341b5018}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Core\Physic">
+      <UniqueIdentifier>{fc629efe-ee60-47d4-bac7-ebcd9275130c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\TinyXML">
+      <UniqueIdentifier>{ec57c111-7d9a-430f-8dbb-ab5806d5ac7b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -44,13 +50,28 @@
     <ClCompile Include="TextureManage.cpp">
       <Filter>Resource Files\Source Files\Core</Filter>
     </ClCompile>
+    <ClCompile Include="D:\tinyxml-master\tinystr.cpp">
+      <Filter>Resource Files\Source Files\TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\tinyxml-master\tinyxml.cpp">
+      <Filter>Resource Files\Source Files\TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\tinyxml-master\tinyxmlerror.cpp">
+      <Filter>Resource Files\Source Files\TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\tinyxml-master\tinyxmlparser.cpp">
+      <Filter>Resource Files\Source Files\TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="TileLayer.cpp">
+      <Filter>Resource Files\Source Files\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector2D.h">
-      <Filter>Resource Files\Source Files\Physic</Filter>
+      <Filter>Resource Files\Source Files\Core\Physic</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h">
-      <Filter>Resource Files\Source Files\Physic</Filter>
+      <Filter>Resource Files\Source Files\Core\Physic</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>Resource Files\Source Files\Object</Filter>
@@ -62,7 +83,7 @@
       <Filter>Resource Files\Source Files\Object\Knight</Filter>
     </ClInclude>
     <ClInclude Include="Body.h">
-      <Filter>Resource Files\Source Files\Physic</Filter>
+      <Filter>Resource Files\Source Files\Core\Physic</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Resource Files\Source Files\Core</Filter>
@@ -76,5 +97,19 @@
     <ClInclude Include="TextureManage.h">
       <Filter>Resource Files\Source Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="TileLayer.hpp">
+      <Filter>Resource Files\Source Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\tinyxml-master\tinystr.h">
+      <Filter>Resource Files\Source Files\TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\tinyxml-master\tinyxml.h">
+      <Filter>Resource Files\Source Files\TinyXML</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="mapdata.txt">
+      <Filter>Resource Files\Source Files\Map</Filter>
+    </Text>
   </ItemGroup>
 </Project>

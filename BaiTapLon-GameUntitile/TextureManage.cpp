@@ -16,11 +16,22 @@ bool TextureManage::load(string id, string fileName)
     {
         SDL_Log(" Fail to load Texture from surface : " , SDL_GetError());
     }
-
     _textureMap[id] = texture;
     return true;
 }
-
+SDL_Texture* TextureManage::load_texture(string path) {
+    SDL_Surface* surface = IMG_Load(path.c_str());
+    if (surface == nullptr)
+    {
+        SDL_Log(" Fail to load Texture : ", path.c_str(), SDL_GetError());
+    }
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(Game::GetInstance()->renderer, surface);
+    if (texture == nullptr)
+    {
+        SDL_Log(" Fail to load Texture from surface : ", SDL_GetError());
+    }
+    return texture;
+}
 void TextureManage::drop(string id)
 {
     SDL_DestroyTexture(_textureMap[id]);

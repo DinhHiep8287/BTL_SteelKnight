@@ -1,14 +1,15 @@
 ﻿using namespace std;
 #include "Game.h"
-const int S = 25;
-const int SCREEN_WIDTH = 64 * S;
-const int SCREEN_HEIGHT = 32 * S;
+#include "Engine.h"
+const int SCREEN_WIDTH = 32 * SIZE;
+const int SCREEN_HEIGHT = 18 * SIZE;
 SDL_Event e;
 time_t t;
 
 
 int main(int argc, char* argv[])
 {
+
     // KHỞI TẠO
     Game::GetInstance()->init();
     // GAMELOOP
@@ -18,7 +19,7 @@ int main(int argc, char* argv[])
         Game::GetInstance()->update();
         Game::GetInstance()->render();
     }
-    
+    // THOÁT
     Game::GetInstance()->cleanSDL();
 
 	return 0;

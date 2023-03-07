@@ -7,6 +7,7 @@ using namespace std;
 #include "Engine.h"
 #include "Input.h"
 #include "Knight.h"
+#include "TileLayer.hpp"
 class Game
 {           
 public:     Game() {}
@@ -14,7 +15,7 @@ public:     Game() {}
               SDL_Window* window;
               SDL_Renderer* renderer;
               bool _isRunning = true;
-            static Game* GetInstance() {
+              static Game* GetInstance() {
                 return _instance = (_instance != nullptr) ? _instance : new Game();
             }
       bool isRunning() { return _isRunning; }

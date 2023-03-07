@@ -1,0 +1,69 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "map.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/tilesettest.tmx": {
+            "scale": 4.881944444444445,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 89.92318634423896,
+                "y": 24.068278805120904
+            }
+        },
+        "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/tilesettest.tmx#collection set": {
+            "scaleInDock": 1
+        },
+        "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/tilesettest.tmx#single set": {
+            "scaleInDock": 1
+        },
+        "TilesNonSliced.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "map.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 824,
+                "y": 247.33333333333331
+            }
+        },
+        "tile.tsx": {
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "untitled.tmx": {
+            "scale": 0.8916145833333333,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 492.36520824814534,
+                "y": 320.2056194871196
+            }
+        }
+    },
+    "last.imagePath": "C:/Users/ACER/source/repos/BaiTapLon-GameUntitile/BaiTapLon-GameUntitile/Map/mapMaterial",
+    "map.height": 18,
+    "map.lastUsedFormat": "tmx",
+    "map.width": 32,
+    "openFiles": [
+        "map.tmx",
+        "tile.tsx",
+        "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/tilesettest.tmx"
+    ],
+    "project": "map.tiled-project",
+    "recentFiles": [
+        "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/tilesettest.tmx",
+        "tile.tsx",
+        "map.tmx",
+        "untitled.tmx",
+        "TilesNonSliced.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}

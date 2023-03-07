@@ -72,11 +72,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2-2.26.2\include;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_ttf-2.0.12\include;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_mixer-2.0.0\include;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_image-2.0.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_mixer-2.0.0\lib\x64;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_ttf-2.0.12\lib\x64;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2-2.26.2\lib\x64;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_image-2.0.0\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_mixer-2.0.0\lib\x64;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_ttf-2.0.12\lib\x64;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2-2.26.2\lib\x64;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_image-2.0.0\lib\x64;C:\Users\ACER\OneDrive\Máy tính\tmxlite-master\tmxlite-master\tmxlite\include\tmxlite;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2-2.26.2\include;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_ttf-2.0.12\include;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_mixer-2.0.0\include;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_image-2.0.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_mixer-2.0.0\lib\x64;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_ttf-2.0.12\lib\x64;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2-2.26.2\lib\x64;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_image-2.0.0\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_mixer-2.0.0\lib\x64;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_ttf-2.0.12\lib\x64;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2-2.26.2\lib\x64;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_image-2.0.0\lib\x64;C:\Users\ACER\OneDrive\Máy tính\tmxlite-master\tmxlite-master\tmxlite\include\tmxlite;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -116,7 +116,7 @@
       <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2-2.26.2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2.lib;SDL2main.lib;SDL2test.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -136,7 +136,7 @@
       <AdditionalIncludeDirectories>C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_image-2.0.0\include;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_ttf-2.0.12\include;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2_mixer-2.0.0\include;C:\Users\ACER\OneDrive\Máy tính\SDL2\SDL2-2.26.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -145,24 +145,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="D:\tinyxml-master\tinystr.cpp" />
+    <ClCompile Include="D:\tinyxml-master\tinyxml.cpp" />
+    <ClCompile Include="D:\tinyxml-master\tinyxmlerror.cpp" />
+    <ClCompile Include="D:\tinyxml-master\tinyxmlparser.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Knight.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="TextureManage.cpp" />
+    <ClCompile Include="TileLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Body.h" />
+    <ClInclude Include="D:\tinyxml-master\tinystr.h" />
+    <ClInclude Include="D:\tinyxml-master\tinyxml.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Knight.h" />
     <ClInclude Include="MainCharacter.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="TextureManage.h" />
+    <ClInclude Include="TileLayer.hpp" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Vector2D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="mapdata.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,5 +1,4 @@
 ﻿#include "Engine.h"
-#include "Engine.h"
 #include <SDL.h>
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
@@ -9,10 +8,10 @@
 #include <ctime> 
 #include <cstdlib> 
 #include <random>
+#include "Game.h"
 using namespace std;
-const int SIZE = 16;
-const int SCREEN_WIDTH = 16 * 4 * SIZE;
-const int SCREEN_HEIGHT = 9 * 4 * SIZE;
+const int SCREEN_WIDTH = 32 * SIZE;
+const int SCREEN_HEIGHT = 18 * SIZE;
 const string WINDOW_TITLE = "UntiledGame";
 void logSDLError(std::ostream& os,
     const std::string& msg, bool fatal)
@@ -43,4 +42,12 @@ void quitSDL(SDL_Window* window, SDL_Renderer* renderer)
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
+}
+SDL_Texture* GetAreaTextrue(SDL_Rect rect, SDL_Texture* source)
+{
+    SDL_Texture* result = SDL_CreateTexture(Game::GetInstance()->renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, rect.w, rect.h);
+    SDL_SetRenderTarget(Game::GetInstance()->renderer, result);
+    SDL_RenderCopy(Game::GetInstance()->renderer, source, &rect, NULL);
+    SDL_SetRenderTarget(Game::GetInstance()->renderer, NULL);
+    return result;
 }

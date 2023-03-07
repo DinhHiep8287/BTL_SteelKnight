@@ -32,6 +32,7 @@ bool Input::getKeyDown(SDL_Scancode key)
 void Input::keyUp()
 {
     _keyStates = SDL_GetKeyboardState(nullptr);
+    
 }
 
 void Input::keyDown()
