@@ -1,11 +1,10 @@
 ﻿using namespace std;
 #include "Game.h"
-#include "Engine.h"
-const int SCREEN_WIDTH = 32 * SIZE;
-const int SCREEN_HEIGHT = 18 * SIZE;
 SDL_Event e;
 time_t t;
 
+Game* Game::_instance = nullptr;
+//Camera* Camera::instance = nullptr;
 
 int main(int argc, char* argv[])
 {

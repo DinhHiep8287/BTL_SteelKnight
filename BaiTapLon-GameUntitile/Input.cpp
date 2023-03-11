@@ -1,4 +1,5 @@
 #include "Input.h"
+
 Input* Input::_intance = nullptr;
 Input::Input()
 {
@@ -7,7 +8,6 @@ Input::Input()
 
 void Input::listen()
 {
-    SDL_Event e;
     while (SDL_PollEvent(&e))
     {
         switch (e.type)
@@ -15,7 +15,8 @@ void Input::listen()
         case SDL_QUIT: 
             Game::GetInstance()->quit();
             break;
-        case SDL_KEYDOWN: keyDown();
+        case SDL_KEYDOWN: 
+            keyDown();
             break;
         case SDL_KEYUP: keyUp();
         default:

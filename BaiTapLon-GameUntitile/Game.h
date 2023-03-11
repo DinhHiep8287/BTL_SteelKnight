@@ -8,6 +8,7 @@ using namespace std;
 #include "Input.h"
 #include "Knight.h"
 #include "TileLayer.hpp"
+#include "Camera.h"
 class Game
 {           
 public:     Game() {}

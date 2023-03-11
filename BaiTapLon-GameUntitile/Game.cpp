@@ -1,21 +1,26 @@
-#include "Game.h"
-
-Game* Game::_instance = nullptr;
+﻿#include "Game.h"
 level* _level = new level();
-layer* layer1 = new layer(); 
-Knight* player = new Knight(new All("KnightIdle", 200, 300, TextureManage::GetInstance()->textureWidth("KnightIdle") / 11, TextureManage::GetInstance()->textureHeight("KnightIdle")));
+layer* layerCollision = new layer();
+Knight* player = new Knight(new All("KnightIdle", 200, 100, TextureManage::GetInstance()->textureWidth("KnightIdle") / 11, TextureManage::GetInstance()->textureHeight("KnightIdle")));
 void Game::init()
 {
+    // Khởi tạo Window + Renderer
     initSDL(window, renderer);
-    layer1->load("LayerData1.txt", TextureManage::GetInstance()->load_texture("Map//mapMaterial//Tiles.png"));
-    _level->loadLayerToLevel(layer1);
+    // Load Layer1 <>
+    layerCollision->load("LayerData1.txt", TextureManage::GetInstance()->load_texture("Map//mapMaterial//Tiles.png"));
+    _level->loadLayerToLevel(layerCollision);
+
+    // Load đồ họa
     TextureManage::GetInstance()->load("WhiteBackground", "Art//Background_0.png");
     TextureManage::GetInstance()->load("KnightIdle", "Art//Knight//idle.png");
     TextureManage::GetInstance()->load("KnightRun", "Art//Knight//Run.png");
     TextureManage::GetInstance()->load("KnightAttack", "Art//Knight//Attack.png");
+    TextureManage::GetInstance()->load("KnightJump", "Art//Knight//Jump.png");
+    TextureManage::GetInstance()->load("KnightFall", "Art//Knight//Fall.png");
     
+    // Set Camera vào nhân vật
+    //Camera::getInstance()->setPoint(player->point);
 }
-
 
 void Game::quit()
 {
@@ -26,7 +31,9 @@ void Game::update()
 {
     float dt =  1;  
     player->updateObject(dt);
-    player->O_tranform->vector.print(" player : ");
+   // player->O_tranform->vector.print(" player : ");
+
+    //Camera::getInstance()->update(dt);
 }
 void Game::render()
 {

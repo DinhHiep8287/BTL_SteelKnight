@@ -9,6 +9,7 @@
 #include <cstdlib> 
 #include <random>
 #include "Game.h"
+#include <fstream>
 using namespace std;
 const int SCREEN_WIDTH = 32 * SIZE;
 const int SCREEN_HEIGHT = 18 * SIZE;
@@ -50,4 +51,62 @@ SDL_Texture* GetAreaTextrue(SDL_Rect rect, SDL_Texture* source)
     SDL_RenderCopy(Game::GetInstance()->renderer, source, &rect, NULL);
     SDL_SetRenderTarget(Game::GetInstance()->renderer, NULL);
     return result;
+}
+//bool CheckCollision(SDL_Rect a, SDL_Rect b)
+//{
+//    bool x_Collision = (a.x + a.w > b.x) || (b.x + b.w > a.x);
+//    bool y_Collision = (a.y + a.h > b.y) || (b.y + b.h > a.y);
+//    return (x_Collision && y_Collision);
+//}
+bool CollisionMap(SDL_Rect a)
+{
+    int tileSize = 32;
+    const int X_Count = 32;
+    const int Y_Count = 18;
+    ifstream map ("LayerData1.txt");
+    int check[Y_Count+1][X_Count+1];
+    for (int i = 1 ; i <= Y_Count; i++)
+    {
+        for (int j = 1 ; j <= X_Count; j++)
+        { 
+            
+            map >> check[i][j];
+            //cout << check[i][j] << " ";
+        }
+        //cout << endl;
+    }
+    int leftTile = a.x / tileSize;
+    int rightTile = (a.x + a.w) / tileSize;
+    int topTile = a.y / tileSize;
+    int botTile = (a.y + a.h) / tileSize;
+    if (leftTile < 0) leftTile = 0;
+    if (rightTile < 0) rightTile = 0;
+    if (topTile < 0) topTile = 0;
+    if (botTile < 0) botTile = 0;
+
+    if (a.x <= 0 || a.y <= 0 || a.x + a.w >= SCREEN_WIDTH || a.y + a.h >= SCREEN_HEIGHT)
+    {
+        return true;
+    }
+
+    for (int i = leftTile; i <= rightTile; i++)
+    {
+        for (int j = topTile; j <= botTile; j++)
+        {
+            if (check[j][i] > 0)
+            {
+                //cout << "vacham " << leftTile << " " << rightTile << " " << topTile << " " << botTile << " ";
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+bool checkcollision(SDL_Rect a, SDL_Rect b)
+{
+    bool x_collision = (a.x + a.w > b.x) || (b.x + b.w > a.x);
+    bool y_collision = (a.y + a.h > b.y) || (b.y + b.h > a.y);
+    return (x_collision && y_collision);
 }

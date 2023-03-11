@@ -1,6 +1,6 @@
 #pragma once
 #include "Vector2D.h"
-#define MASS  1.0f
+#define MASS 1
 #define GRAVITY 9.8f 
 
 
@@ -19,7 +19,7 @@ public: float _mass, _gravity;
     // FORCE
     inline void setForce(Vector2D F) { _force = F; }
     inline void setForceX(float Fx) { _force.x = Fx; }
-    inline void setForceY(float Fy) { _force.x = Fy; }
+    inline void setForceY(float Fy) { _force.y = Fy; }
     inline void unSetForce() { _force = Vector2D(0, 0); }
     // FRICTION
     inline void setFriction(Vector2D F) { _friction = F; }

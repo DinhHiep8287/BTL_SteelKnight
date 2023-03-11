@@ -3,12 +3,24 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map.tmx",
+    "activeFile": "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/mappppp.tmx",
     "expandedProjectPaths": [
         "."
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/mappppp.tmx": {
+            "scale": 0.858154296875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 515.0588904694167,
+                "y": 458.5422475106686
+            }
+        },
+        "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/tileeee.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/tilesettest.tmx": {
             "scale": 4.881944444444445,
             "selectedLayer": 0,
@@ -32,7 +44,7 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 824,
-                "y": 247.33333333333331
+                "y": 248.66666666666669
             }
         },
         "tile.tsx": {
@@ -49,19 +61,21 @@
         }
     },
     "last.imagePath": "C:/Users/ACER/source/repos/BaiTapLon-GameUntitile/BaiTapLon-GameUntitile/Map/mapMaterial",
-    "map.height": 18,
+    "map.height": 32,
     "map.lastUsedFormat": "tmx",
-    "map.width": 32,
+    "map.width": 64,
     "openFiles": [
         "map.tmx",
-        "tile.tsx",
-        "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/tilesettest.tmx"
+        "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/mappppp.tmx",
+        "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/tileeee.tsx"
     ],
     "project": "map.tiled-project",
     "recentFiles": [
+        "map.tmx",
+        "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/tileeee.tsx",
+        "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/mappppp.tmx",
         "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/tilesettest.tmx",
         "tile.tsx",
-        "map.tmx",
         "untitled.tmx",
         "TilesNonSliced.tsx"
     ],

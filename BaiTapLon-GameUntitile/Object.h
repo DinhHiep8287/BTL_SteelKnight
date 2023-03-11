@@ -21,6 +21,7 @@ struct All
     SDL_RendererFlip flip;
     Body* body;
 
+
     All(string _id , float _x, float _y, float _width, float _height, SDL_RendererFlip _flip = SDL_FLIP_NONE)
     {
         id = _id;
@@ -47,6 +48,7 @@ public : Transform* O_tranform;
        float O_width, O_height;
        string O_id;
        SDL_RendererFlip O_flip;
+       Vector2D* point = new Vector2D(0,0);
 
        Object(All* all)
        {

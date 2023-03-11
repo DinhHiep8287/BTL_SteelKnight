@@ -1,8 +1,7 @@
 ﻿#include "TextureManage.h"
 #include "Game.h"
-
+#include "Camera.h"
 TextureManage* TextureManage::_instance = nullptr;
-
 bool TextureManage::load(string id, string fileName)
 {
     SDL_Surface* surface = IMG_Load(fileName.c_str());
@@ -59,7 +58,7 @@ void TextureManage::drawFrame(string id, float x, float y, float width, float he
 {
         // Tọa độ của 1 source frame sẽ được xác định bởi x = Chiều Dài 1 frame * thứ tự frame ; y = Chiều cao 1 frame * thứ tự cột
         SDL_Rect srcrect = { width * frame , height * row , width , height };
-        SDL_Rect dstrect = { x , y , width , height };
+        SDL_Rect dstrect = { x  , y , width , height};
         SDL_RenderCopyEx(Game::GetInstance()->renderer, _textureMap[id], &srcrect, &dstrect, 0, NULL, flip);
 }
 

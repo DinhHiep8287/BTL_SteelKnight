@@ -5,7 +5,6 @@
 #include <string>
 #include <fstream>
 using namespace std;
-
 void layer::load(string path , SDL_Texture* tileSetTex) {
     ifstream _map(path);
     

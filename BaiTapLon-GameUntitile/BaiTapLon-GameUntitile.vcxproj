@@ -145,10 +145,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="D:\tinyxml-master\tinystr.cpp" />
-    <ClCompile Include="D:\tinyxml-master\tinyxml.cpp" />
-    <ClCompile Include="D:\tinyxml-master\tinyxmlerror.cpp" />
-    <ClCompile Include="D:\tinyxml-master\tinyxmlparser.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Knight.cpp" />
     <ClCompile Include="main.cpp" />
@@ -160,9 +156,9 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Body.h" />
-    <ClInclude Include="D:\tinyxml-master\tinystr.h" />
-    <ClInclude Include="D:\tinyxml-master\tinyxml.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="HitBox.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Knight.h" />
     <ClInclude Include="MainCharacter.h" />
@@ -173,7 +169,7 @@
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="mapdata.txt" />
+    <Text Include="LayerData1.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

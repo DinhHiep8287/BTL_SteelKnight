@@ -21,16 +21,16 @@ struct tile {
     int tx;
     // tọa độ của y trong sprite sheet
     int ty;
-    int width ;
-    int height ;
+    int width;
+    int height;
 
-    tile(SDL_Texture* tset, int _x  , int _y ,
-        int id , int _w = SIZE , int _h = SIZE)
+    tile(SDL_Texture* tset, int _x, int _y,
+        int id, int _w = SIZE, int _h = SIZE)
     {
         sheet = tset;
         x = _x;
-        y = _y; 
-        tx = (id% NUMTILESETX == 0) ? (NUMTILESETX-1)*SIZE : (id % NUMTILESETX - 1) * SIZE;
+        y = _y;
+        tx = (id % NUMTILESETX == 0) ? (NUMTILESETX - 1) * SIZE : (id % NUMTILESETX - 1) * SIZE;
         ty = (id % NUMTILESETX == 0) ? (id / NUMTILESETX - 1) * SIZE : (id / NUMTILESETX) * SIZE;
         width = _w;
         height = _h;
@@ -57,22 +57,22 @@ struct tile {
 };
 struct layer {
     vector<tile> tiles;
-    void load(string mapPath , SDL_Texture* tileSetTex);
+    void load(string mapPath, SDL_Texture* tileSetTex);
     void draw(SDL_Renderer* ren);
 };
 class level
 {
-public :vector<layer*> _level;
-    void loadLayerToLevel(layer* layer)
-    {
-        _level.push_back(layer);
-    }
-    void renderLevel( SDL_Renderer* ren)
-    {
-        for (int i = 0; i < _level.size() ; i++)
-        {
-            _level[i]->draw(ren);
-        }
-    }
+public:vector<layer*> _level;
+      void loadLayerToLevel(layer* layer)
+      {
+          _level.push_back(layer);
+      }
+      void renderLevel(SDL_Renderer* ren)
+      {
+          for (int i = 0; i < _level.size(); i++)
+          {
+              _level[i]->draw(ren);
+          }
+      }
 };
 
