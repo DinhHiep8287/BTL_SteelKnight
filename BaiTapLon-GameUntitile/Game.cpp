@@ -11,7 +11,7 @@ void Game::init()
     _level->loadLayerToLevel(layerCollision);
 
     // Load đồ họa
-    TextureManage::GetInstance()->load("WhiteBackground", "Art//Background_0.png");
+    TextureManage::GetInstance()->load("SimpleBackground", "Art//Background_0.png");
     TextureManage::GetInstance()->load("KnightIdle", "Art//Knight//idle.png");
     TextureManage::GetInstance()->load("KnightRun", "Art//Knight//Run.png");
     TextureManage::GetInstance()->load("KnightAttack", "Art//Knight//Attack.png");
@@ -19,7 +19,7 @@ void Game::init()
     TextureManage::GetInstance()->load("KnightFall", "Art//Knight//Fall.png");
     
     // Set Camera vào nhân vật
-    //Camera::getInstance()->setPoint(player->point);
+    Camera::getInstance()->setPoint(player->point);
 }
 
 void Game::quit()
@@ -33,11 +33,12 @@ void Game::update()
     player->updateObject(dt);
    // player->O_tranform->vector.print(" player : ");
 
-    //Camera::getInstance()->update(dt);
+    Camera::getInstance()->update(dt);
 }
 void Game::render()
 {
-    SDL_RenderCopy(renderer, TextureManage::GetInstance()->_textureMap["WhiteBackground"], NULL, NULL);
+    //SDL_RenderCopy(renderer, TextureManage::GetInstance()->_textureMap["SimpleBackground"], NULL, NULL);
+    TextureManage::GetInstance()->draw("SimpleBackground", 0, 0, 2000, 1000, SDL_FLIP_NONE, 0.5 );
     _level->renderLevel(renderer);
     player->drawObject( player->animation );
     SDL_RenderPresent(renderer);

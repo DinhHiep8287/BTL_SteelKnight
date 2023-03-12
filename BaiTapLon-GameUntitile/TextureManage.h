@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "Engine.h"
 #include <map>
+#include "Camera.h"
+#include "Game.h"
 class TextureManage
 {
 public: 
@@ -14,9 +16,10 @@ public:
     void drop(string id);
     void clean();
     // vẽ 1 frame 
-    void draw(string id, float x, float y, float width, float height, SDL_RendererFlip flip);
+    void draw(string id, float x, float y, float width, float height, SDL_RendererFlip flip , float paralaxSpeed);
     // Vẽ từng khung hình của một Sprite 
-    void drawFrame(string id, float x, float y, float width, float height, int row, int frame, SDL_RendererFlip flip);
+    void drawFrame(string id, float x, float y, float width, float height, int row, int frame, SDL_RendererFlip flip );
+    
     float textureWidth(string id)
     {
         SDL_Texture* texture = _textureMap[id];
@@ -32,5 +35,11 @@ public:
         return rect1.h;
     }
     SDL_Texture* load_texture(string path);
+    void drawHitbox(SDL_Rect* hitbox, SDL_Renderer* ren)
+    {
+        SDL_Rect tempRect = { hitbox->x - Camera::getInstance()->pos.x , hitbox->y - Camera::getInstance()->pos.y , hitbox->w , hitbox->h };
+        SDL_RenderDrawRect(ren, &tempRect);
+    }
+
 };
 

@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/mappppp.tmx",
+    "activeFile": "newMap1.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -47,6 +47,14 @@
                 "y": 248.66666666666669
             }
         },
+        "newMap1.tmx": {
+            "scale": 0.33,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 1072.7272727272727,
+                "y": 783.3333333333334
+            }
+        },
         "tile.tsx": {
             "scaleInDock": 0.75,
             "scaleInEditor": 1
@@ -65,17 +73,18 @@
     "map.lastUsedFormat": "tmx",
     "map.width": 64,
     "openFiles": [
-        "map.tmx",
-        "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/mappppp.tmx",
-        "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/tileeee.tsx"
+        "newMap1.tmx",
+        "tile.tsx"
     ],
     "project": "map.tiled-project",
+    "property.type": "file",
     "recentFiles": [
+        "tile.tsx",
+        "newMap1.tmx",
         "map.tmx",
         "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/tileeee.tsx",
         "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/mappppp.tmx",
         "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/tilesettest.tmx",
-        "tile.tsx",
         "untitled.tmx",
         "TilesNonSliced.tsx"
     ],

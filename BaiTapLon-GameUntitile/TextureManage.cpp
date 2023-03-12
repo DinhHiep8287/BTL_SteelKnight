@@ -1,5 +1,4 @@
 ﻿#include "TextureManage.h"
-#include "Game.h"
 #include "Camera.h"
 TextureManage* TextureManage::_instance = nullptr;
 bool TextureManage::load(string id, string fileName)
@@ -47,18 +46,18 @@ void TextureManage::clean()
     _textureMap.clear();
 }
 
-void TextureManage::draw(string id, float x, float y, float width, float height, SDL_RendererFlip flip)
+void TextureManage::draw(string id, float x, float y, float width, float height, SDL_RendererFlip flip , float paralaxSpeed)
 {
     SDL_Rect srcrect = { 0 , 0 , width , height };
-    SDL_Rect dstrect = { x , y , width , height };
+    SDL_Rect dstrect = { x - Camera::getInstance()->pos.x * paralaxSpeed , y - Camera::getInstance()->pos.y * paralaxSpeed , width , height};
+    cout << " x : " << x - Camera::getInstance()->pos.x * paralaxSpeed << "  y : " << y - Camera::getInstance()->pos.y * paralaxSpeed << endl;
     SDL_RenderCopyEx(Game::GetInstance()->renderer, _textureMap[id], &srcrect, &dstrect, 0, NULL, flip);
 }
 
 void TextureManage::drawFrame(string id, float x, float y, float width, float height, int row, int frame, SDL_RendererFlip flip)
 {
-        // Tọa độ của 1 source frame sẽ được xác định bởi x = Chiều Dài 1 frame * thứ tự frame ; y = Chiều cao 1 frame * thứ tự cột
-        SDL_Rect srcrect = { width * frame , height * row , width , height };
-        SDL_Rect dstrect = { x  , y , width , height};
-        SDL_RenderCopyEx(Game::GetInstance()->renderer, _textureMap[id], &srcrect, &dstrect, 0, NULL, flip);
+    // Tọa độ của 1 source frame sẽ được xác định bởi x = Chiều Dài 1 frame * thứ tự frame ; y = Chiều cao 1 frame * thứ tự cột
+    SDL_Rect srcrect = { width * frame , height * row , width , height };
+    SDL_Rect dstrect = { x - Camera::getInstance()->pos.x, y - Camera::getInstance()->pos.y , width , height };
+    SDL_RenderCopyEx(Game::GetInstance()->renderer, _textureMap[id], &srcrect, &dstrect, 0, NULL, flip);
 }
-

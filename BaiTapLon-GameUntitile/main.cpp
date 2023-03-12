@@ -4,7 +4,7 @@ SDL_Event e;
 time_t t;
 
 Game* Game::_instance = nullptr;
-//Camera* Camera::instance = nullptr;
+Camera* Camera::instance = nullptr;
 
 int main(int argc, char* argv[])
 {

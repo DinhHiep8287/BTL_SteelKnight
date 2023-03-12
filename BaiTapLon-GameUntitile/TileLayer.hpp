@@ -3,12 +3,13 @@
 #include <vector>
 #include "Game.h"
 #include "TextureManage.h" 
+#include "Camera.h"
 using namespace std;
 const int NUMTILESET = 132;
 const int NUMTILESETX = 11;
 const int NUMTILESETY = 12;
-const int NUMMAPX = 32;
-const int NUMMAPY = 19;
+const int NUMMAPX = 64;
+const int NUMMAPY = 32;
 const int SIZE = 32;
 struct tile {
     SDL_Texture* sheet;
@@ -47,8 +48,8 @@ struct tile {
         src.h = height;
 
         SDL_Rect dest;
-        dest.x = x;
-        dest.y = y;
+        dest.x = x - Camera::getInstance()->pos.x;
+        dest.y = y - Camera::getInstance()->pos.y;
         dest.w = src.w;
         dest.h = src.h;
 

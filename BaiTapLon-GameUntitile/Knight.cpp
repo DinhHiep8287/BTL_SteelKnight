@@ -8,14 +8,14 @@ Knight::Knight(All* all ) : MainCharacter(all)
 {
     animation = new Animation(all->id, all->flip, 0, 100, 10, 0);
     hitBox = new HitBox();
-    hitBox->setClip(-100 , -80 , 200 , 190);
+    hitBox->setClip(-120 , -85 , 230 , 200);
     hitBox->setHitBox(all->x , all->y , all->width, all->height);
     isGround = true; 
     IsJumping = false;
     body = new Body();
     // Đặt điểm tâm của player
     point->x = hitBox->_hitBox.x + hitBox->_hitBox.w / 2 ;
-    point->y = hitBox->_hitBox.y + hitBox->_hitBox.h / 2;
+    point->y = (hitBox->_hitBox.y + hitBox->_hitBox.h / 2);
 
 
 }
@@ -24,7 +24,8 @@ void Knight::drawObject( Animation* animation )
 {
     animation->DrawAnimation( animation->id , O_tranform->vector.x , O_tranform->vector.y , O_width, O_height, animation->flip);
     SDL_SetRenderDrawColor(Game::GetInstance()->renderer, 255, 255, 255, 255);
-    SDL_RenderDrawRect(Game::GetInstance()->renderer, &hitBox->_hitBox);
+    //SDL_RenderDrawRect(Game::GetInstance()->renderer, &hitBox->_hitBox);
+    TextureManage::GetInstance()->drawHitbox(&hitBox->_hitBox, Game::GetInstance()->renderer);
 }
 void Knight::updateObject(float dt)
 {
@@ -192,7 +193,7 @@ void Knight::updateObject(float dt)
     //cout << "  Fall : " << isFalling << endl;
     //cout << hitBox->_hitBox.x << "   " << hitBox->_hitBox.y << endl;
     //cout << point->x << " " << point->y << endl;
-
+    
 
     // Update chuyển động
     animation->UpdateAnimation();
@@ -206,9 +207,10 @@ void Knight::updateObject(float dt)
 
     //update Tâm 
     point->x = hitBox->_hitBox.x + hitBox->_hitBox.w / 2;
-    point->y = hitBox->_hitBox.y + hitBox->_hitBox.h / 2;
+    // Kéo tâm của nhân vật xuống để khi render khi tọa độ của nhân vật ở dưới cùng map sẽ không bị lộ tile
+    point->y = (hitBox->_hitBox.y + hitBox->_hitBox.h / 2) * 0.9 ;
 }
-
+//
 void Knight::cleanObject(SDL_Texture* texture)
 {
     SDL_DestroyTexture(texture);
