@@ -9,6 +9,13 @@
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "Atlas.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/mappppp.tmx": {
             "scale": 0.858154296875,
             "selectedLayer": 0,
@@ -35,27 +42,71 @@
         "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/tilesettest.tmx#single set": {
             "scaleInDock": 1
         },
+        "Tile_01.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "TilesNonSliced.tsx": {
             "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tileset.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "aaa.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "assets_version1.1.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "atlas ob.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 3
+        },
+        "atlas-props.tsx": {
+            "scaleInDock": 3,
             "scaleInEditor": 1
         },
         "map.tmx": {
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 824,
-                "y": 248.66666666666669
+                "x": 539.3333333333333,
+                "y": 288.66666666666663
             }
         },
         "newMap1.tmx": {
-            "scale": 0.33,
+            "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1072.7272727272727,
-                "y": 783.3333333333334
+                "x": 307.5,
+                "y": 622.5
             }
         },
+        "newMap1.tmx#atlas ob": {
+            "scaleInEditor": 1
+        },
+        "newMap1.tmx#ob1": {
+            "scaleInDock": 1
+        },
+        "ob.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ob1.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 2,
+            "scaleInEditor": 3
+        },
         "tile.tsx": {
+            "dynamicWrapping": false,
             "scaleInDock": 0.75,
             "scaleInEditor": 1
         },
@@ -68,25 +119,37 @@
             }
         }
     },
-    "last.imagePath": "C:/Users/ACER/source/repos/BaiTapLon-GameUntitile/BaiTapLon-GameUntitile/Map/mapMaterial",
-    "map.height": 32,
+    "last.externalTilesetPath": "C:/Users/ACER/source/repos/BaiTapLon-GameUntitile/BaiTapLon-GameUntitile/Map/mapMaterial",
+    "last.imagePath": "C:/Users/ACER/OneDrive/Máy tính/Sunny-land-files/Sunny-land-assets-files/code/sunny-land/assets/atlas",
+    "map.height": 19,
     "map.lastUsedFormat": "tmx",
     "map.width": 64,
     "openFiles": [
         "newMap1.tmx",
-        "tile.tsx"
+        "ob.tsx",
+        "aaa.tsx"
     ],
     "project": "map.tiled-project",
     "property.type": "file",
     "recentFiles": [
-        "tile.tsx",
+        "aaa.tsx",
+        "ob.tsx",
         "newMap1.tmx",
+        "ob1.tsx",
+        "atlas-props.tsx",
+        "assets_version1.1.tsx",
+        "Tile_01.tsx",
+        "atlas ob.tsx",
         "map.tmx",
-        "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/tileeee.tsx",
-        "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/mappppp.tmx",
-        "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/tilesettest.tmx",
-        "untitled.tmx",
-        "TilesNonSliced.tsx"
+        "Atlas.tsx",
+        "tile.tsx",
+        "Tileset.tsx"
     ],
-    "tileset.lastUsedFormat": "tsx"
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 8,
+        "width": 8
+    },
+    "tileset.type": 1
 }

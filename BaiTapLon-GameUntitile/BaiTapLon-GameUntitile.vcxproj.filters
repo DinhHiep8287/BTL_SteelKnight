@@ -96,5 +96,8 @@
     <Text Include="LayerData1.txt">
       <Filter>Resource Files\Source Files\Map</Filter>
     </Text>
+    <Text Include="LayerData2.txt">
+      <Filter>Resource Files\Source Files\Map</Filter>
+    </Text>
   </ItemGroup>
 </Project>

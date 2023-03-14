@@ -5,11 +5,8 @@
 #include "TextureManage.h" 
 #include "Camera.h"
 using namespace std;
-const int NUMTILESET = 132;
-const int NUMTILESETX = 11;
-const int NUMTILESETY = 12;
-const int NUMMAPX = 64;
-const int NUMMAPY = 32;
+const int NUMMAPX = 128;
+const int NUMMAPY = 28;
 const int SIZE = 32;
 struct tile {
     SDL_Texture* sheet;
@@ -26,7 +23,7 @@ struct tile {
     int height;
 
     tile(SDL_Texture* tset, int _x, int _y,
-        int id, int _w = SIZE, int _h = SIZE)
+        int id, int NUMTILESETX , int NUMTILESETY ,  int _w = SIZE, int _h = SIZE)
     {
         sheet = tset;
         x = _x;
@@ -58,21 +55,21 @@ struct tile {
 };
 struct layer {
     vector<tile> tiles;
-    void load(string mapPath, SDL_Texture* tileSetTex);
+    void load(string mapPath, SDL_Texture* tileSetTex , int NumTileSetX, int NumTileSetY , int firstId);
     void draw(SDL_Renderer* ren);
 };
 class level
 {
-public:vector<layer*> _level;
+public:vector<layer*> _layers;
       void loadLayerToLevel(layer* layer)
       {
-          _level.push_back(layer);
+          _layers.push_back(layer);
       }
       void renderLevel(SDL_Renderer* ren)
       {
-          for (int i = 0; i < _level.size(); i++)
+          for (int i = 0; i < _layers.size(); i++)
           {
-              _level[i]->draw(ren);
+              _layers[i]->draw(ren);
           }
       }
 };

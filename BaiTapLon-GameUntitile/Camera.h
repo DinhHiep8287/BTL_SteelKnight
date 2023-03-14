@@ -54,9 +54,9 @@ public:
             viewBox.y = 0;
         }
         // Tương tự, đã đến giới hạn map thì không cuộn camera nữa
-        if (viewBox.x > (2 * screenWidth - viewBox.w))
+        if (viewBox.x > ( 32*128 - viewBox.w))
         {
-            viewBox.x = 2 * screenWidth - viewBox.w;
+            viewBox.x = 32 * 128  - viewBox.w;
         }
         if (viewBox.y > (2 * screenHeight - viewBox.h))
         {

@@ -8,7 +8,7 @@ Knight::Knight(All* all ) : MainCharacter(all)
 {
     animation = new Animation(all->id, all->flip, 0, 100, 10, 0);
     hitBox = new HitBox();
-    hitBox->setClip(-120 , -85 , 230 , 200);
+    hitBox->setClip(-125 , -100 , 250 , 225);
     hitBox->setHitBox(all->x , all->y , all->width, all->height);
     isGround = true; 
     IsJumping = false;
@@ -25,7 +25,7 @@ void Knight::drawObject( Animation* animation )
     animation->DrawAnimation( animation->id , O_tranform->vector.x , O_tranform->vector.y , O_width, O_height, animation->flip);
     SDL_SetRenderDrawColor(Game::GetInstance()->renderer, 255, 255, 255, 255);
     //SDL_RenderDrawRect(Game::GetInstance()->renderer, &hitBox->_hitBox);
-    TextureManage::GetInstance()->drawHitbox(&hitBox->_hitBox, Game::GetInstance()->renderer);
+    //TextureManage::GetInstance()->drawHitbox(&hitBox->_hitBox, Game::GetInstance()->renderer);
 }
 void Knight::updateObject(float dt)
 {
@@ -138,7 +138,7 @@ void Knight::updateObject(float dt)
     
 
     // Nhảy
-    if (Input::getInstance()->getKeyDown(SDL_SCANCODE_W) && isGround == true)
+    if (Input::getInstance()->getKeyDown(SDL_SCANCODE_W) && isGround && CollisionUp(hitBox->_hitBox) == false)
     {
         IsJumping = true;
         isGround = false;
@@ -175,6 +175,7 @@ void Knight::updateObject(float dt)
 
     if (CollisionMap(hitBox->_hitBox) )
     {
+        IsJumping = false;
         isGround = true;
         O_tranform->vector.y = LastSafePos.y;
     }
@@ -191,7 +192,7 @@ void Knight::updateObject(float dt)
     //cout << "  Ground : " << isGround;
     //cout << "  Jump : " << IsJumping;
     //cout << "  Fall : " << isFalling << endl;
-    //cout << hitBox->_hitBox.x << "   " << hitBox->_hitBox.y << endl;
+    cout << hitBox->_hitBox.x << "   " << hitBox->_hitBox.y << endl;
     //cout << point->x << " " << point->y << endl;
     
 
@@ -208,7 +209,7 @@ void Knight::updateObject(float dt)
     //update Tâm 
     point->x = hitBox->_hitBox.x + hitBox->_hitBox.w / 2;
     // Kéo tâm của nhân vật xuống để khi render khi tọa độ của nhân vật ở dưới cùng map sẽ không bị lộ tile
-    point->y = (hitBox->_hitBox.y + hitBox->_hitBox.h / 2) * 0.9 ;
+    point->y = (hitBox->_hitBox.y + hitBox->_hitBox.h / 2) * 0.78 ;
 }
 //
 void Knight::cleanObject(SDL_Texture* texture)

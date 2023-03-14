@@ -170,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="LayerData1.txt" />
+    <Text Include="LayerData2.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

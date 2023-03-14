@@ -50,7 +50,7 @@ void TextureManage::draw(string id, float x, float y, float width, float height,
 {
     SDL_Rect srcrect = { 0 , 0 , width , height };
     SDL_Rect dstrect = { x - Camera::getInstance()->pos.x * paralaxSpeed , y - Camera::getInstance()->pos.y * paralaxSpeed , width , height};
-    cout << " x : " << x - Camera::getInstance()->pos.x * paralaxSpeed << "  y : " << y - Camera::getInstance()->pos.y * paralaxSpeed << endl;
+    //cout << " x : " << x - Camera::getInstance()->pos.x * paralaxSpeed << "  y : " << y - Camera::getInstance()->pos.y * paralaxSpeed << endl;
     SDL_RenderCopyEx(Game::GetInstance()->renderer, _textureMap[id], &srcrect, &dstrect, 0, NULL, flip);
 }
 
