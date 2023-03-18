@@ -13,3 +13,4 @@
   
 * **Map được custom bằng Tiled** : https://www.mapeditor.org/
                  
+Cần tối ưu hóa game,  game lag quá @@ < Tối ưu hóa va chạm trước , xong đến render >
