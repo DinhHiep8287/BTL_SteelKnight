@@ -1,9 +1,4 @@
 ﻿#include "TileLayer.hpp"
-#include <SDL.h>
-#include <SDL_image.h>
-#include <stdio.h>
-#include <string>
-#include <fstream>
 using namespace std;
 void layer::load(string path , SDL_Texture* tileSetTex , int NumTileSetX , int NumTileSetY , int firstId) {
     ifstream _map(path);

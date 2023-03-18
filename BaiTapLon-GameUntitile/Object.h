@@ -1,16 +1,8 @@
 ﻿#pragma once
-#include <SDL.h>
-#include <SDL_mixer.h>
-#include <SDL_ttf.h>
-#include <SDL_image.h>
 #include <iostream>
-#include <string.h>
-#include <ctime> 
-#include <cstdlib> 
-#include <random>
+#include <SDL.h>
 using namespace std;
 #include "Transform.h"
-#include "Vector2D.h"
 #include "Body.h"
 // struct All lưu thông tin gồm : texture , tọa độ , độ cao dài , hướng texture 
 struct All
@@ -58,9 +50,5 @@ public : Transform* O_tranform;
            O_flip = all->flip;
            O_tranform = new Transform(all->x, all->y);
        }
-      
-       void drawObject();
-       void updateObject();
-       void cleanObject();  
 };
 

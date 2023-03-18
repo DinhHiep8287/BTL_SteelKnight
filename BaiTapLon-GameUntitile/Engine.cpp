@@ -1,15 +1,4 @@
 ﻿#include "Engine.h"
-#include <SDL.h>
-#include <SDL_mixer.h>
-#include <SDL_ttf.h>
-#include <SDL_image.h>
-#include <iostream>
-#include <string.h>
-#include <ctime> 
-#include <cstdlib> 
-#include <random>
-#include "Game.h"
-#include <fstream>
 using namespace std;
 const int SCREEN_WIDTH = 32 * SIZE;
 const int SCREEN_HEIGHT = 18 * SIZE;
@@ -44,20 +33,6 @@ void quitSDL(SDL_Window* window, SDL_Renderer* renderer)
     SDL_DestroyWindow(window);
     SDL_Quit();
 }
-SDL_Texture* GetAreaTextrue(SDL_Rect rect, SDL_Texture* source)
-{
-    SDL_Texture* result = SDL_CreateTexture(Game::GetInstance()->renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, rect.w, rect.h);
-    SDL_SetRenderTarget(Game::GetInstance()->renderer, result);
-    SDL_RenderCopy(Game::GetInstance()->renderer, source, &rect, NULL);
-    SDL_SetRenderTarget(Game::GetInstance()->renderer, NULL);
-    return result;
-}
-//bool CheckCollision(SDL_Rect a, SDL_Rect b)
-//{
-//    bool x_Collision = (a.x + a.w > b.x) || (b.x + b.w > a.x);
-//    bool y_Collision = (a.y + a.h > b.y) || (b.y + b.h > a.y);
-//    return (x_Collision && y_Collision);
-//}
 bool CollisionMap(SDL_Rect a)
 {
     int tileSize = 32;
@@ -98,7 +73,7 @@ bool CollisionMap(SDL_Rect a)
             if (check[j][i] > 0)
             {   
                 //cout << " i = " << i << "   j =   " << j << endl;
-                //cout << "vacham " << leftTile << " " << rightTile << " " << topTile << " " << botTile << " " << endl; 
+                //cout << "vacham " << leftTile << " " << rightTile <<" " << check[j][i] << " " << topTile << " " << botTile << " " << endl;
                 return true;
             }
         }
@@ -106,7 +81,6 @@ bool CollisionMap(SDL_Rect a)
 
     return false;
 }
-
 bool CollisionUp(SDL_Rect a)
 {
     int tileSize = 32;
@@ -129,23 +103,16 @@ bool CollisionUp(SDL_Rect a)
     int leftTile = a.x / tileSize;
     int rightTile = (a.x + a.w) / tileSize;
     int topTile = a.y / tileSize;
-    int botTile = (a.y + a.h) / tileSize;
     if (leftTile < 0) leftTile = 0;
     if (rightTile < 0) rightTile = 0;
     if (topTile < 0) topTile = 0;
-    if (botTile < 0) botTile = 0;
 
-    if (a.x <= 0 || a.y <= 0 || a.x + a.w >= mapWidth || a.y + a.h >= mapHeight)
-    {
-        return true;
-    }
 
     for (int i = leftTile; i <= rightTile; i++)
     {
         int j = topTile;
         if (check[j][i] > 0)
         {
-            //cout << " i = " << i << "   j =   " << j << endl;
             //cout << "vacham " << leftTile << " " << rightTile << " " << topTile << " " << botTile << " " << endl; 
             return true;
         }
@@ -155,9 +122,97 @@ bool CollisionUp(SDL_Rect a)
     return false;
 }
 
-bool checkcollision(SDL_Rect a, SDL_Rect b)
+bool CheckCollision(SDL_Rect a, SDL_Rect b)
 {
-    bool x_collision = (a.x + a.w > b.x) || (b.x + b.w > a.x);
-    bool y_collision = (a.y + a.h > b.y) || (b.y + b.h > a.y);
-    return (x_collision && y_collision);
+    int LeftA = a.x; int RightA = a.x + a.w;
+    int TopA = a.y; int BotA = a.y + a.h;
+
+    int LeftB = b.x; int RightB = b.x + b.w;
+    int TopB = b.y; int BotB = b.y + b.h;
+
+    if (BotA <= TopB)
+    {
+        return false;
+    }
+
+    if (TopA >= BotB)
+    {
+        return false;
+    }
+
+    if (RightA <= LeftB)
+    {
+        return false;
+    }
+
+    if (LeftA >= RightB)
+    {
+        return false;
+    }
+    return true;
+}
+
+bool checkcollisionX(SDL_Rect a)
+
+{
+    int tileSize = 32;
+    const int X_Count = 128;
+    const int Y_Count = 28;
+    int mapWidth = tileSize * X_Count;
+    int mapHeight = tileSize * Y_Count;
+    ifstream map("LayerData1.txt");
+    int check[Y_Count + 1][X_Count + 1];
+    for (int i = 0; i < Y_Count; i++)
+    {
+        for (int j = 0; j < X_Count; j++)
+        {
+
+            map >> check[i][j];
+            //cout << check[i][j] << " ";
+        }
+        //cout << endl;
+    }
+    int leftTile = a.x / tileSize;
+    int rightTile = (a.x + a.w) / tileSize;
+    int botTile = (a.y + a.h) / tileSize;
+    if (leftTile < 0) leftTile = 0;
+    if (rightTile < 0) rightTile = 0;
+    if (botTile < 0) botTile = 0;
+    if (check[botTile - 1][leftTile - 1] > 0) return true;
+    if (check[botTile - 1][rightTile + 1] > 0) return true;
+
+
+    return false; 
+}
+
+// if char at the edge return true
+bool checkEdge(SDL_Rect a)
+{
+    int tileSize = 32;
+    const int X_Count = 128;
+    const int Y_Count = 28;
+    int mapWidth = tileSize * X_Count;
+    int mapHeight = tileSize * Y_Count;
+    ifstream map("LayerData1.txt");
+    int check[Y_Count + 1][X_Count + 1];
+    for (int i = 0; i < Y_Count; i++)
+    {
+        for (int j = 0; j < X_Count; j++)
+        {
+
+            map >> check[i][j];
+            //cout << check[i][j] << " ";
+        }
+        //cout << endl;
+    }
+    int leftTile = a.x / tileSize;
+    int rightTile = (a.x + a.w) / tileSize;
+    int botTile = (a.y + a.h) / tileSize;
+    if (leftTile < 0) leftTile = 0;
+    if (rightTile < 0) rightTile = 0;
+    if (botTile < 0) botTile = 0;
+    if (check[botTile ][leftTile - 1] == 0) return true;
+    if (check[botTile ][rightTile + 1] == 0) return true;
+
+    return false;
 }

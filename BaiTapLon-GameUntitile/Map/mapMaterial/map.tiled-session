@@ -10,7 +10,12 @@
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "": {
-            "scaleInDock": 1
+            "scaleInDock": 1.5
+        },
+        "11.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
         },
         "Atlas.tsx": {
             "scaleInDock": 1,
@@ -42,6 +47,10 @@
         "C:/Users/ACER/OneDrive/Máy tính/tmxlite-master/tmxlite-master/ParseTest/maps/tilesettest.tmx#single set": {
             "scaleInDock": 1
         },
+        "Platformer Tileset Pixel Art.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1.5
+        },
         "Tile_01.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -53,6 +62,18 @@
         "Tileset.tsx": {
             "dynamicWrapping": false,
             "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "Trees and Rocks, Nauris Amatnieks.tsx": {
+            "scaleInDock": 0.33,
+            "scaleInEditor": 0.75
+        },
+        "[OC] 32x32 Trees Practice.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "[OC] Fantasy Platformer Props.tsx": {
+            "scaleInDock": 0.75,
             "scaleInEditor": 1
         },
         "aaa.tsx": {
@@ -82,11 +103,11 @@
             }
         },
         "newMap1.tmx": {
-            "scale": 1,
+            "scale": 0.75,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 307.5,
-                "y": 622.5
+                "x": 730.6666666666665,
+                "y": 452.6666666666667
             }
         },
         "newMap1.tmx#atlas ob": {
@@ -120,36 +141,36 @@
         }
     },
     "last.externalTilesetPath": "C:/Users/ACER/source/repos/BaiTapLon-GameUntitile/BaiTapLon-GameUntitile/Map/mapMaterial",
-    "last.imagePath": "C:/Users/ACER/OneDrive/Máy tính/Sunny-land-files/Sunny-land-assets-files/code/sunny-land/assets/atlas",
+    "last.imagePath": "C:/Users/ACER/OneDrive/Máy tính",
     "map.height": 19,
     "map.lastUsedFormat": "tmx",
     "map.width": 64,
     "openFiles": [
         "newMap1.tmx",
-        "ob.tsx",
-        "aaa.tsx"
+        "11.tsx",
+        "[OC] Fantasy Platformer Props.tsx"
     ],
     "project": "map.tiled-project",
     "property.type": "file",
     "recentFiles": [
-        "aaa.tsx",
-        "ob.tsx",
+        "[OC] Fantasy Platformer Props.tsx",
+        "11.tsx",
         "newMap1.tmx",
+        "Trees and Rocks, Nauris Amatnieks.tsx",
+        "aaa.tsx",
+        "[OC] 32x32 Trees Practice.tsx",
+        "ob.tsx",
+        "Platformer Tileset Pixel Art.tsx",
         "ob1.tsx",
         "atlas-props.tsx",
         "assets_version1.1.tsx",
-        "Tile_01.tsx",
-        "atlas ob.tsx",
-        "map.tmx",
-        "Atlas.tsx",
-        "tile.tsx",
-        "Tileset.tsx"
+        "Tile_01.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
-        "height": 8,
-        "width": 8
+        "height": 32,
+        "width": 32
     },
-    "tileset.type": 1
+    "tileset.type": 0
 }

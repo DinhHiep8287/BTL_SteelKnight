@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "Engine.h"
+#include "SDL.h"
 #include "TextureManage.h"
 class Animation
 {
@@ -9,7 +9,7 @@ public: string id;
       int AnimationSpeed;
       int frameCount;
       int frame;
-
+      Animation(){}
       Animation(string _id, SDL_RendererFlip _flip, int _row, int _AnimationSpeed, int _frameCount, int _frame) {
           id = _id;
           flip = _flip;
@@ -27,7 +27,7 @@ public: string id;
           frameCount = _frameCount;
           frame = _frame;
       }
-
+      
       void UpdateAnimation()
       {
           frame = (SDL_GetTicks() / AnimationSpeed) % frameCount;

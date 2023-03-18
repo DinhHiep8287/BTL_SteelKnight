@@ -1,6 +1,4 @@
 ﻿#include "TextureManage.h"
-#include "Camera.h"
-TextureManage* TextureManage::_instance = nullptr;
 bool TextureManage::load(string id, string fileName)
 {
     SDL_Surface* surface = IMG_Load(fileName.c_str());

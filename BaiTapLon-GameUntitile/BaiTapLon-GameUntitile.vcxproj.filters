@@ -32,9 +32,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Resource Files\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Knight.cpp">
-      <Filter>Resource Files\Source Files\Object\Knight</Filter>
-    </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>Resource Files\Source Files\Core</Filter>
     </ClCompile>
@@ -50,6 +47,9 @@
     <ClCompile Include="TileLayer.cpp">
       <Filter>Resource Files\Source Files\Map</Filter>
     </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Resource Files\Source Files\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector2D.h">
@@ -60,12 +60,6 @@
     </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>Resource Files\Source Files\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="MainCharacter.h">
-      <Filter>Resource Files\Source Files\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Knight.h">
-      <Filter>Resource Files\Source Files\Object\Knight</Filter>
     </ClInclude>
     <ClInclude Include="Body.h">
       <Filter>Resource Files\Source Files\Core\Physic</Filter>
@@ -91,12 +85,18 @@
     <ClInclude Include="Camera.h">
       <Filter>Resource Files\Source Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Resource Files\Source Files\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="LayerData1.txt">
       <Filter>Resource Files\Source Files\Map</Filter>
     </Text>
     <Text Include="LayerData2.txt">
+      <Filter>Resource Files\Source Files\Map</Filter>
+    </Text>
+    <Text Include="LayerData3.txt">
       <Filter>Resource Files\Source Files\Map</Filter>
     </Text>
   </ItemGroup>

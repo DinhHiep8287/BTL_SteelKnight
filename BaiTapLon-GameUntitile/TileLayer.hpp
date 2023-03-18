@@ -2,7 +2,6 @@
 #include <string>
 #include <vector>
 #include "Game.h"
-#include "TextureManage.h" 
 #include "Camera.h"
 using namespace std;
 const int NUMMAPX = 128;

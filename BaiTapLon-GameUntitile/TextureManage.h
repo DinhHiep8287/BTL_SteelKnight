@@ -1,16 +1,15 @@
 ﻿#pragma once
-#include "Engine.h"
+#include <SDL_image.h>
 #include <map>
 #include "Camera.h"
 #include "Game.h"
 class TextureManage
 {
 public: 
-    TextureManage(){}
     static TextureManage* _instance;
     map<string, SDL_Texture*> _textureMap;
     static TextureManage* GetInstance() {
-        return _instance = (_instance != nullptr) ? _instance : new TextureManage();
+        return _instance = (_instance != nullptr) ? _instance : new TextureManage ;
     }
     bool load(string id, string fileName);
     void drop(string id);

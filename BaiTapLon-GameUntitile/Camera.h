@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include "Vector2D.h"
 #include "SDL.h"
 const int screenWidth = 32 * 32;
