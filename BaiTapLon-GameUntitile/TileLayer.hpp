@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <string>
 #include <vector>
+#include <fstream>
 #include "Game.h"
 #include "Camera.h"
 using namespace std;
@@ -54,8 +55,33 @@ struct tile {
 };
 struct layer {
     vector<tile> tiles;
-    void load(string mapPath, SDL_Texture* tileSetTex , int NumTileSetX, int NumTileSetY , int firstId);
-    void draw(SDL_Renderer* ren);
+    void load(string path, SDL_Texture* tileSetTex, int NumTileSetX, int NumTileSetY, int firstId)
+    {
+        {
+            ifstream _map(path);
+            for (int i = 0; i < NUMMAPX * NUMMAPY; i++)
+            {
+                int id = 0;
+                int x = (i % NUMMAPX) * SIZE;
+                int y = (i / NUMMAPX) * SIZE;
+                _map >> id;
+                id = id - firstId + 1;
+                tile tempTile(tileSetTex, x, y, id, NumTileSetX, NumTileSetY);
+                tiles.push_back(tempTile);
+            }
+        }
+    }
+    void draw(SDL_Renderer* ren)
+    {
+        /*int right  = ((hitbox._hitBox.x + screenWidth / 2) / 32 <= 128)
+        (hitbox._hitBox.x - screenWidth / 2) / 32;
+        (hitbox._hitBox.y + screenHeight / 2) / 32;
+        (hitbox._hitBox.y - screenHeight / 2) / 32;*/
+
+        for (int i = 0; i < tiles.size(); i++) {
+            tiles[i].draw(ren);
+        }
+    }
 };
 class level
 {

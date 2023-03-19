@@ -8,14 +8,14 @@
 #include "Engine.h"
 #include <vector>
 using namespace std;
-const float jumpTime = 10 ;
-const float jumpForce = 50;
+const float jumpTime = 8 ;
+const float jumpForce = 34 ;
 const float attackTime = 8;
-
+const float DieTime = 25;
 const float ENERMYATTACKTIME = 15;
 class Enermy;
 class Knight;
-
+class FullEnermy;
 class Knight : public Object
 {
 public:     int health = 100 ;
@@ -33,13 +33,16 @@ public:     int health = 100 ;
             bool IsJumping = true ;
             bool isGround = false ;
             bool isTakeHit = false;
+            bool isDead = false;
             float _jumpTime = jumpTime; 
             float _attackTime = attackTime;
+            float _dieTime = DieTime;
             Vector2D LastSafePos ;
       
       bool attackEnermy(Enermy* enermy, float dir);
-      void drawObject( Animation* animation );
-      void updateObject(float dt , Enermy* enermy);
+      Enermy* closestEnermy(FullEnermy* fullEnermy);
+      void drawObject( Animation* animation  , int  isTurnOnHitBox);
+      void updateObject(float dt , FullEnermy* fullEnermy, vector<vector<int>> layerData1 );
       void cleanObject(SDL_Texture* texture);
 
       
@@ -48,7 +51,7 @@ public:     int health = 100 ;
 class Enermy : public Object
 {
 public:
-    int health = 20;
+    int health = 30;
     HitBox* hitBox;
     Animation* animation;
     Body* body;
@@ -70,9 +73,10 @@ public:
     int dir = 1;
     bool isAttacking = false;
     bool isTakeHit = false;
-
-    void drawEnermy(SDL_Renderer* ren, Animation* animation);
-    void updateEnermy(float dt , Knight* player , vector<string> MonsterData , vector<int> MonsterData1 );
+    bool isDead = false;
+    float _dieTime = DieTime;
+    void drawEnermy(SDL_Renderer* ren, Animation* animation , Knight* player , int isTurnOnHitBox);
+    void updateEnermy(float dt , Knight* player , vector<string> MonsterData , vector<int> MonsterData1  , vector<vector<int>> layerData1);
     void cleanEnermy(SDL_Texture* tex);
 
 };
@@ -87,31 +91,31 @@ public :vector<Enermy*> fullEnermy;
            fullEnermy.push_back(enermy);
        }
 
-       void drawFullEnermy(SDL_Renderer* ren )
+       void drawFullEnermy(SDL_Renderer* ren , Knight* player , int isTurnOnHitBox)
        {
            for (int i = 0; i < fullEnermy.size(); i++)
            {
-               fullEnermy[i]->drawEnermy(ren, fullEnermy[i]->animation);
+               fullEnermy[i]->drawEnermy(ren, fullEnermy[i]->animation , player , isTurnOnHitBox );
            }
        }
 
-       void updateFullEnermy(float dt , Knight* player ,vector< vector<string> >MonsterData , vector<vector<int>> MonsterData1 )
+       void updateFullEnermy(float dt , Knight* player ,vector<vector<string> >MonsterData , vector<vector<int>> MonsterData1 , vector<vector<int>> layerData1 )
        {
            for (int i = 0; i < 2; i++)
            {
-               fullEnermy[i]->updateEnermy(dt, player ,  MonsterData[0], MonsterData1[0]);
+               fullEnermy[i]->updateEnermy(dt, player ,  MonsterData[0], MonsterData1[0] ,  layerData1 );
            }
            for (int i = 2; i < 4; i++)
            {
-               fullEnermy[i]->updateEnermy(dt, player, MonsterData[1], MonsterData1[1]);
+               fullEnermy[i]->updateEnermy(dt, player, MonsterData[1], MonsterData1[1] ,  layerData1);
            }
            for (int i = 4; i < 7; i++)
            {
-               fullEnermy[i]->updateEnermy(dt, player, MonsterData[2], MonsterData1[2]);
+               fullEnermy[i]->updateEnermy(dt, player, MonsterData[2], MonsterData1[2] ,  layerData1);
            }
            for (int i = 7; i < 10; i++)
            {
-               fullEnermy[i]->updateEnermy(dt, player, MonsterData[3], MonsterData1[3]);
+               fullEnermy[i]->updateEnermy(dt, player, MonsterData[3], MonsterData1[3] , layerData1);
            }
 
            //for (int i = 0; i < fullEnermy.size(); i++)

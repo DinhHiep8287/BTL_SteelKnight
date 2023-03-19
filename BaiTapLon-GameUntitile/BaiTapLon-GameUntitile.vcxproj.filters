@@ -44,9 +44,6 @@
     <ClCompile Include="TextureManage.cpp">
       <Filter>Resource Files\Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="TileLayer.cpp">
-      <Filter>Resource Files\Source Files\Map</Filter>
-    </ClCompile>
     <ClCompile Include="Character.cpp">
       <Filter>Resource Files\Source Files\Object</Filter>
     </ClCompile>

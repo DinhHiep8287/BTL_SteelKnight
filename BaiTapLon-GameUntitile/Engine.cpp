@@ -33,35 +33,19 @@ void quitSDL(SDL_Window* window, SDL_Renderer* renderer)
     SDL_DestroyWindow(window);
     SDL_Quit();
 }
-bool CollisionMap(SDL_Rect a)
+bool CollisionMap(SDL_Rect a , vector<vector<int>> check)
 {
-    int tileSize = 32;
-    const int X_Count = 128;
-    const int Y_Count = 28;
-    int mapWidth = tileSize * X_Count;
-    int mapHeight = tileSize * Y_Count;
-    ifstream map ("LayerData1.txt");
-    int check[Y_Count+1][X_Count+1];
-    for (int i = 0 ; i < Y_Count; i++)
-    {
-        for (int j = 0 ; j < X_Count; j++)
-        { 
-            
-            map >> check[i][j];
-            //cout << check[i][j] << " ";
-        }
-        //cout << endl;
-    }
-    int leftTile = a.x / tileSize;
-    int rightTile = (a.x + a.w) / tileSize;
-    int topTile = a.y / tileSize;
-    int botTile = (a.y + a.h) / tileSize;
+
+    int leftTile = a.x / 32;
+    int rightTile = (a.x + a.w) / 32;
+    int topTile = a.y /32;
+    int botTile = (a.y + a.h) / 32;
     if (leftTile < 0) leftTile = 0;
     if (rightTile < 0) rightTile = 0;
     if (topTile < 0) topTile = 0;
     if (botTile < 0) botTile = 0;
 
-    if (a.x <= 0 || a.y <= 0 || a.x + a.w >= mapWidth || a.y + a.h >= mapHeight)
+    if (a.x <= 0 || a.y <= 0 || a.x + a.w >= 32*128 || a.y + a.h >= 32*28)
     {
         return true;
     }
@@ -81,28 +65,11 @@ bool CollisionMap(SDL_Rect a)
 
     return false;
 }
-bool CollisionUp(SDL_Rect a)
+bool CollisionUp(SDL_Rect a , vector<vector<int>> check)
 {
-    int tileSize = 32;
-    const int X_Count = 128;
-    const int Y_Count = 28;
-    int mapWidth = tileSize * X_Count;
-    int mapHeight = tileSize * Y_Count;
-    ifstream map("LayerData1.txt");
-    int check[Y_Count + 1][X_Count + 1];
-    for (int i = 0; i < Y_Count; i++)
-    {
-        for (int j = 0; j < X_Count; j++)
-        {
-
-            map >> check[i][j];
-            //cout << check[i][j] << " ";
-        }
-        //cout << endl;
-    }
-    int leftTile = a.x / tileSize;
-    int rightTile = (a.x + a.w) / tileSize;
-    int topTile = a.y / tileSize;
+    int leftTile = a.x / 32 ;
+    int rightTile = (a.x + a.w) / 32;
+    int topTile = a.y / 32;
     if (leftTile < 0) leftTile = 0;
     if (rightTile < 0) rightTile = 0;
     if (topTile < 0) topTile = 0;
@@ -152,32 +119,16 @@ bool CheckCollision(SDL_Rect a, SDL_Rect b)
     return true;
 }
 
-bool checkcollisionX(SDL_Rect a)
+bool checkcollisionX(SDL_Rect a , vector<vector<int>> check)
 
 {
-    int tileSize = 32;
-    const int X_Count = 128;
-    const int Y_Count = 28;
-    int mapWidth = tileSize * X_Count;
-    int mapHeight = tileSize * Y_Count;
-    ifstream map("LayerData1.txt");
-    int check[Y_Count + 1][X_Count + 1];
-    for (int i = 0; i < Y_Count; i++)
-    {
-        for (int j = 0; j < X_Count; j++)
-        {
-
-            map >> check[i][j];
-            //cout << check[i][j] << " ";
-        }
-        //cout << endl;
-    }
-    int leftTile = a.x / tileSize;
-    int rightTile = (a.x + a.w) / tileSize;
-    int botTile = (a.y + a.h) / tileSize;
+    int leftTile = a.x / 32;
+    int rightTile = (a.x + a.w) / 32;
+    int topTile = a.y / 32;
+    int botTile = (a.y + a.h) / 32;
     if (leftTile < 0) leftTile = 0;
     if (rightTile < 0) rightTile = 0;
-    if (botTile < 0) botTile = 0;
+    if (topTile < 0) topTile = 0;
     if (check[botTile - 1][leftTile - 1] > 0) return true;
     if (check[botTile - 1][rightTile + 1] > 0) return true;
 
@@ -194,7 +145,7 @@ bool checkEdge(SDL_Rect a)
     int mapWidth = tileSize * X_Count;
     int mapHeight = tileSize * Y_Count;
     ifstream map("LayerData1.txt");
-    int check[Y_Count + 1][X_Count + 1];
+    int check[Y_Count][X_Count];
     for (int i = 0; i < Y_Count; i++)
     {
         for (int j = 0; j < X_Count; j++)

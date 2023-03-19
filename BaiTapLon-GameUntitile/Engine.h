@@ -16,9 +16,9 @@ void draw(SDL_Texture* texture, SDL_Renderer* renderer, float x, float y, float 
 void drawFrame(SDL_Texture* texture, SDL_Renderer* renderer, float x, float y, float width, float height, int row, int frame, SDL_RendererFlip flip = SDL_FLIP_NONE);
 SDL_Texture* GetAreaTextrue(SDL_Rect rect, SDL_Texture* source);
 // Return True if Collision and Renturn False if NotCollision
-bool CollisionMap(SDL_Rect a);
-bool CollisionUp(SDL_Rect a);
-bool checkcollisionX(SDL_Rect a);
+bool CollisionMap(SDL_Rect a, vector<vector<int>> check);
+bool CollisionUp(SDL_Rect a, vector<vector<int>> check);
+bool checkcollisionX(SDL_Rect a, vector<vector<int>> check);
 bool checkEdge(SDL_Rect a);
 // Return True if Collision and Renturn False if NotCollision
 bool CheckCollision(SDL_Rect a, SDL_Rect b); 
