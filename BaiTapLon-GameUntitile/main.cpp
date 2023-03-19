@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
         Game::GetInstance()->update();
         Game::GetInstance()->render();
     }
-    // THOÁT
+    // THOÁT //
     Game::GetInstance()->cleanSDL();
 
 	return 0;
