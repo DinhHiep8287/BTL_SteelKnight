@@ -35,6 +35,6 @@ public: string id;
 
       void DrawAnimation(string id, float x, float y, int width, int height, SDL_RendererFlip flip)
       {
-            TextureManage::GetInstance()->drawFrame(id, x , y, width, height,row ,frame , flip);
+            //TextureManage::GetInstance()->drawFrame(id, x , y, width, height,row ,frame , flip);
       }
 };
