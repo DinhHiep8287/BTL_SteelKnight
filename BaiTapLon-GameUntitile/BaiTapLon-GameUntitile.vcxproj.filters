@@ -85,6 +85,9 @@
     <ClInclude Include="Character.h">
       <Filter>Resource Files\Source Files\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Resource Files\Source Files\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="LayerData1.txt">

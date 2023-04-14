@@ -11,8 +11,9 @@ using namespace std;
 const float jumpTime = 8 ;
 const float jumpForce = 34 ;
 const float attackTime = 8;
-const float DieTime = 25;
+const float DieTime = 45;
 const float ENERMYATTACKTIME = 15;
+const float RespawnTime = 1000;
 class Enermy;
 class Knight;
 class FullEnermy;
@@ -36,12 +37,13 @@ public:     int health = 100 ;
             bool isDead = false;
             float _jumpTime = jumpTime; 
             float _attackTime = attackTime;
-            float _dieTime = DieTime;
+            float _dieTime = 50;
             Vector2D LastSafePos ;
-      
+            int score = 0 ;
+            int bonusScore = 0;
       bool attackEnermy(Enermy* enermy, float dir);
       Enermy* closestEnermy(FullEnermy* fullEnermy);
-      void drawObject( Animation* animation  , int  isTurnOnHitBox);
+      void drawObject( Animation* animation );
       void updateObject(float dt , FullEnermy* fullEnermy, vector<vector<int>> layerData1 );
       void cleanObject(SDL_Texture* texture);
 
@@ -75,8 +77,10 @@ public:
     bool isTakeHit = false;
     bool isDead = false;
     float _dieTime = DieTime;
-    void drawEnermy(SDL_Renderer* ren, Animation* animation , Knight* player , int isTurnOnHitBox);
-    void updateEnermy(float dt , Knight* player , vector<string> MonsterData , vector<int> MonsterData1  , vector<vector<int>> layerData1);
+    float _spawnTime = RespawnTime;
+    bool chase = false;
+    void drawEnermy(SDL_Renderer* ren, Animation* animation , Knight* player );
+    void updateEnermy(float dt , Knight* player , vector<string> MonsterData , vector<int> MonsterData1  , vector<vector<int>> layerData1 , vector<Vector2D> spawnPoint);
     void cleanEnermy(SDL_Texture* tex);
 
 };
@@ -91,37 +95,32 @@ public :vector<Enermy*> fullEnermy;
            fullEnermy.push_back(enermy);
        }
 
-       void drawFullEnermy(SDL_Renderer* ren , Knight* player , int isTurnOnHitBox)
+       void drawFullEnermy(SDL_Renderer* ren , Knight* player )
        {
            for (int i = 0; i < fullEnermy.size(); i++)
            {
-               fullEnermy[i]->drawEnermy(ren, fullEnermy[i]->animation , player , isTurnOnHitBox );
+               fullEnermy[i]->drawEnermy(ren, fullEnermy[i]->animation , player );
            }
        }
 
-       void updateFullEnermy(float dt , Knight* player ,vector<vector<string> >MonsterData , vector<vector<int>> MonsterData1 , vector<vector<int>> layerData1 )
+       void updateFullEnermy(float dt , Knight* player ,vector<vector<string> >MonsterData , vector<vector<int>> MonsterData1 , vector<vector<int>> layerData1 , vector<Vector2D> spawnPoint)
        {
            for (int i = 0; i < 2; i++)
            {
-               fullEnermy[i]->updateEnermy(dt, player ,  MonsterData[0], MonsterData1[0] ,  layerData1 );
+               fullEnermy[i]->updateEnermy(dt, player ,  MonsterData[0], MonsterData1[0] ,  layerData1 , spawnPoint);
            }
            for (int i = 2; i < 4; i++)
            {
-               fullEnermy[i]->updateEnermy(dt, player, MonsterData[1], MonsterData1[1] ,  layerData1);
+               fullEnermy[i]->updateEnermy(dt, player, MonsterData[1], MonsterData1[1] ,  layerData1 , spawnPoint);
            }
            for (int i = 4; i < 7; i++)
            {
-               fullEnermy[i]->updateEnermy(dt, player, MonsterData[2], MonsterData1[2] ,  layerData1);
+               fullEnermy[i]->updateEnermy(dt, player, MonsterData[2], MonsterData1[2] ,  layerData1 , spawnPoint);
            }
-           for (int i = 7; i < 10; i++)
+           for (int i = 7; i < 11; i++)
            {
-               fullEnermy[i]->updateEnermy(dt, player, MonsterData[3], MonsterData1[3] , layerData1);
+               fullEnermy[i]->updateEnermy(dt, player, MonsterData[3], MonsterData1[3] , layerData1 , spawnPoint);
            }
-
-           //for (int i = 0; i < fullEnermy.size(); i++)
-           //{
-           //    fullEnermy[i]->updateEnermy(dt, player, MonsterData[2], MonsterData1[2]);
-           //}
        }
        void cleanFullEnermy();
 };

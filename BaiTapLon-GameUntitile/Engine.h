@@ -22,5 +22,7 @@ bool checkcollisionX(SDL_Rect a, vector<vector<int>> check);
 bool checkEdge(SDL_Rect a);
 // Return True if Collision and Renturn False if NotCollision
 bool CheckCollision(SDL_Rect a, SDL_Rect b); 
+// return true if focus and false if its not
+bool checkFocus(const int& x, const int& y, SDL_Rect* rect);
 
 

@@ -2,7 +2,7 @@
 using namespace std;
 const int SCREEN_WIDTH = 32 * SIZE;
 const int SCREEN_HEIGHT = 18 * SIZE;
-const string WINDOW_TITLE = "UntiledGame";
+const string WINDOW_TITLE = "STEEL KNIGHT - GAME_PROJECT_BY_DINH_TUAN_HIEP_UET";
 void logSDLError(std::ostream& os,
     const std::string& msg, bool fatal)
 {
@@ -166,4 +166,14 @@ bool checkEdge(SDL_Rect a)
     if (check[botTile ][rightTile + 1] == 0) return true;
 
     return false;
+}
+
+bool checkFocus(const int & x, const int & y, SDL_Rect* rect)
+{
+    if (x >= rect->x && x <= rect->x + rect->w && y >= rect->y && y <= rect->h + rect->y)
+    {
+        return true;
+    }
+    else return false;
+
 }

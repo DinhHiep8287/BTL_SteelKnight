@@ -1,13 +1,15 @@
 ﻿#include "Game.h"
 
-int isTurnOnHitBox;
+SDL_Rect rect = { 100,100,200,200 };
 // Dữ liệu về quái 
 vector<vector<string>> MonsterData;
 vector<vector<int>> MonsterData1;
-// Dữ liệu về map
+// Dữ liệu về map + respawnPoint
 vector<vector<int>> LayerData1;
 vector<vector<int>> LayerData2;
 vector<vector<int>> LayerData3;
+vector<Vector2D> spawnPoint;
+
 //
 level* _level = new level();
 layer* layerCollision = new layer();
@@ -15,6 +17,7 @@ layer* layer3 = new layer();
 layer* layer2 = new layer();
 FullEnermy* fullEnermy = new FullEnermy();
 Knight* player = new Knight(new All("" , 100 , 200 , 0 , 0));
+
 Enermy* enermy1 = new Enermy(new All("" , 100, 500, 0, 0 ));
 Enermy* enermy6 = new Enermy(new All("", 1250, 570, 0, 0));
 Enermy* enermy7 = new Enermy(new All("", 2700, 550, 0, 0));
@@ -25,26 +28,31 @@ Enermy* enermy13 = new Enermy(new All("", 2300, 300, 0, 0));
 Enermy* enermy14 = new Enermy(new All("", 1850, 570, 0, 0));
 Enermy* enermy16 = new Enermy(new All("", 1800, 0, 0, 0));
 Enermy* enermy17 = new Enermy(new All("", 1300, 0, 0, 0));
-// 100 , 500 
-// 1100 , 570 
-//1250 , 570
-//2700 , 550
-//  3200 , 560 
-// 3400 , 560
-// 3600 , 560
-// 3100 , -130 
-//2300, -110
-//2300 , 300
-//1850, 570
-//1800, 0
-//1300 , 0
+Enermy* enermy18 = new Enermy(new All("", 3600, 100, 0, 0));
+
 void Game::init()
 {
-    cout << " NHAN PHIM 1 DE BAT HITBOX \n NHAN PHIM 0 DE TAT HITBOX \n";
-    cin >> isTurnOnHitBox;
+    // Khởi tạo SDL_mixer
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+    {
+        printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+    }
+    music = Mix_LoadMUS("dungeon_theme_2.wav");
+    if (music == NULL)
+    {
+        printf("Failed to load %s\n", Mix_GetError());
+    }
 
-    // Khởi tạo Window + Renderer
+    // Khởi tạo Font 
+    TTF_Init();
+    Game::GetInstance()->font = TTF_OpenFont("fontGame.ttf", 40);
+    if (font == NULL) cout << "loi font ";
+    Game::GetInstance()->MenuFont = TTF_OpenFont("fontGame.ttf", 60);
+    if (MenuFont == NULL) cout << "loi font ";
+
+    // Khởi tạo Window + Renderer + Text 
     initSDL(window, renderer);
+
     // Khởi tạo quái
     MonsterData.resize(10); MonsterData1.resize(10);
     for (int i = 0; i < 10; i++) MonsterData[i].resize(10);
@@ -99,7 +107,9 @@ void Game::init()
     fullEnermy->loadEnermy(enermy14);
     fullEnermy->loadEnermy(enermy16);
     fullEnermy->loadEnermy(enermy17);
-    // Nạp dự liệu về map
+    fullEnermy->loadEnermy(enermy18);
+
+    // Nạp dự liệu về map + spawnPoint
     const int tileSize = 32;
     const int X_Count = 128;
     const int Y_Count = 28;
@@ -130,9 +140,7 @@ void Game::init()
         {
 
             map1 >> LayerData1[i][j];
-            //cout << LayerData1[i][j] << " ";
         }
-        //cout << endl;
     }
     for (int i = 0; i < Y_Count; i++)
     {
@@ -140,9 +148,7 @@ void Game::init()
         {
 
             map2 >> LayerData2[i][j];
-            //cout << LayerData1[i][j] << " ";
         }
-        //cout << endl;
     }
     for (int i = 0; i < Y_Count; i++)
     {
@@ -150,13 +156,25 @@ void Game::init()
         {
 
             map3 >> LayerData3[i][j];
-            //cout << LayerData1[i][j] << " ";
         }
-        //cout << endl;
     }
-     
+    
+    spawnPoint.push_back(Vector2D(100, 500));
+    spawnPoint.push_back(Vector2D(1250, 570));
+    spawnPoint.push_back(Vector2D(2700, 550));
+    spawnPoint.push_back(Vector2D(3600, 560));
+    spawnPoint.push_back(Vector2D(3100, -130));
+    spawnPoint.push_back(Vector2D(3600, 560));
+    spawnPoint.push_back(Vector2D(2300, -110));
+    spawnPoint.push_back(Vector2D(2300, 300));
+    spawnPoint.push_back(Vector2D(1850, 570));
+    spawnPoint.push_back(Vector2D(1800, 0));
+    spawnPoint.push_back(Vector2D(1300, 0));
+    spawnPoint.push_back(Vector2D(3600, 100));
+
 
     // Load Layer + level
+
     layerCollision->load("LayerData1.txt", TextureManage::GetInstance()->load_texture("Art//Tileset.png") , 10 , 6 , 1 );
     layer3->load("LayerData2.txt", TextureManage::GetInstance()->load_texture("Art//Ob.png"), 12, 11 , 61 );
     layer2->load("LayerData3.txt", TextureManage::GetInstance()->load_texture("Art//Ob1.png"), 40, 30, 193);
@@ -164,7 +182,12 @@ void Game::init()
     _level->loadLayerToLevel(layer2);
     _level->loadLayerToLevel(layer3);
     // Load đồ họa
-    //
+    
+    // heart
+    TextureManage::GetInstance()->load("heart", "Art//heart.png");
+
+    
+    
     //background
     TextureManage::GetInstance()->load("background_1", "Art//Layers//1_1.png");
     TextureManage::GetInstance()->load("background_2", "Art//Layers//2_2.png");
@@ -215,15 +238,19 @@ void Game::init()
 
 void Game::quit()
 {
+    InMenu = false;
     _isRunning = false;
 }
-
 void Game::update()
 {
-    float dt = 1;  
+    if (Mix_PlayingMusic() == 0)
+    {
+        //Play the music
+        Mix_PlayMusic(music, -1);
+    }
+    float dt = 1; 
     player->updateObject(dt, fullEnermy ,LayerData1 );
-    fullEnermy->updateFullEnermy(dt, player , MonsterData , MonsterData1 , LayerData1 );
-    //enermy1->updateEnermy(dt,player);
+    fullEnermy->updateFullEnermy(dt, player , MonsterData , MonsterData1 , LayerData1 , spawnPoint);
     Camera::getInstance()->update(dt);
 }
 void Game::render()
@@ -242,9 +269,30 @@ void Game::render()
 
     // Render Player
 
-    fullEnermy->drawFullEnermy(renderer , player , isTurnOnHitBox);
-    player->drawObject(player->animation , isTurnOnHitBox);
-    SDL_RenderPresent(renderer);
+    fullEnermy->drawFullEnermy(renderer , player );
+    player->drawObject(player->animation );
+
+    // Heath Text + Heart Icon
+    string heathStr = to_string(player->health);
+    playerHeath.setText(heathStr);
+    playerHeath.loadRenderText(font, renderer , {255,51,51});
+    playerHeath.setRectPos(200, 20);
+    playerHeath.renderText(renderer);
+    SDL_Rect heartIconRect = { 120,20,60,60 };
+    SDL_RenderCopy(renderer, TextureManage::GetInstance()->_textureMap["heart"], NULL, &heartIconRect);
+    // Score Text
+    string scoreStr = to_string(player->score);
+    scoreStr = "Score : " + scoreStr;
+    Score.setText(scoreStr);
+    Score.loadRenderText(font, renderer , {224,224,224});
+    Score.setRectPos(600, 20);
+    Score.renderText(renderer);
+
+
+    SDL_RenderPresent(renderer );
+
+    playerHeath.Free();
+    Score.Free();
     
 }
 void Game::event()

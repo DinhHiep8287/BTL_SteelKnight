@@ -57,21 +57,24 @@ Enermy* Knight::closestEnermy(FullEnermy* fullEnermy)
     }
     return fullEnermy->fullEnermy[res];
 }
-void Knight::drawObject( Animation* animation , int isTurnOnHitBox)
+void Knight::drawObject( Animation* animation )
 {
     animation->DrawAnimation( animation->id , O_tranform->vector.x , O_tranform->vector.y , O_width, O_height, animation->flip);
-    if (isTurnOnHitBox == 1) {
+    // Bật hitBox khi Debug
+    /*if (isTurnOnHitBox == 1) {
         SDL_SetRenderDrawColor(Game::GetInstance()->renderer, 255, 255, 255, 255);
         TextureManage::GetInstance()->drawHitbox(&hitBox->_hitBox, Game::GetInstance()->renderer);
         TextureManage::GetInstance()->drawHitbox(&hitBox->_attackHitBoxLeft, Game::GetInstance()->renderer);
         TextureManage::GetInstance()->drawHitbox(&hitBox->_attackHitBoxRight, Game::GetInstance()->renderer);
-    }
+    }*/
 }
 void Knight::updateObject(float dt, FullEnermy* fullEnermy, vector<vector<int>> layerData1 )
 {
     int lastY = O_tranform->vector.y;
-    if ( health < 0)
+
+    if ( health <= 0)
     {
+        health = 0;
         isDead = true;
         _dieTime -= dt;
     }
@@ -92,7 +95,6 @@ void Knight::updateObject(float dt, FullEnermy* fullEnermy, vector<vector<int>> 
     }
     if (_dieTime < 0 && isDead == true && dir == 0)
     {
-        cout << " Ban Da Chet , An Esc De Thoat \n";
         body->unSetForce();
         animation->SetAnimation("KnightDead", SDL_FLIP_NONE, 0, 100, 1, 0);
         O_width = TextureManage::GetInstance()->textureWidth("KnightDead") / animation->frameCount;
@@ -100,7 +102,6 @@ void Knight::updateObject(float dt, FullEnermy* fullEnermy, vector<vector<int>> 
     }
     if (_dieTime < 0 && isDead == true && dir == 1 )
     {
-        cout << " Ban Da Chet , An Esc De Thoat \n";
         body->unSetForce();
         animation->SetAnimation("KnightDead", SDL_FLIP_HORIZONTAL, 0, 100, 1, 0);
         O_width = TextureManage::GetInstance()->textureWidth("KnightDead") / animation->frameCount;
@@ -269,7 +270,7 @@ void Knight::updateObject(float dt, FullEnermy* fullEnermy, vector<vector<int>> 
     // Rơi xuống vực 
     if (CollisionMap(hitBox->_hitBox,layerData1) && hitBox->_hitBox.y >= 840 )
     {
-        health -= 100;
+        health = 0;
     }
         if ((CheckCollision(hitBox->_hitBox, closestEnermy(fullEnermy)->hitBox->_hitBox) && !closestEnermy(fullEnermy)->isDead) || CollisionMap(hitBox->_hitBox, layerData1))
         {
@@ -285,7 +286,7 @@ void Knight::updateObject(float dt, FullEnermy* fullEnermy, vector<vector<int>> 
     // DEBUG
 
     //O_tranform->vector.print(" ");
-    //hitBox->printHitbox();
+    //hitBox->printHitbox("");
     //cout << "isJumping : " << IsJumping << "   isGround  : " << isGround << endl;
     //cout << "ps : " << body->_position.x << " " << body->_position.y << endl;
     //cout << "  Ground : " << isGround;
@@ -299,7 +300,7 @@ void Knight::updateObject(float dt, FullEnermy* fullEnermy, vector<vector<int>> 
     //cout << health<< " " << isTakeHit << endl;
     //cout << _attackTime << endl;
     //attackEnermy(enermy, dir);
-
+        //cout << score << endl;
     // Update chuyển động
     animation->UpdateAnimation();
     // Check xem có đang rơi hay không 
@@ -338,7 +339,7 @@ bool Enermy::attackPlayer(Knight* player, int dir)
         else return false;
     }
 }
-void Enermy::updateEnermy(float dt , Knight* player , vector<string> MonsterData , vector<int> MonsterData1 , vector<vector<int>> layerData1)
+void Enermy::updateEnermy(float dt , Knight* player , vector<string> MonsterData , vector<int> MonsterData1 , vector<vector<int>> layerData1 , vector<Vector2D> spawnPoint)
 {
     
     //DEBUG
@@ -350,15 +351,36 @@ void Enermy::updateEnermy(float dt , Knight* player , vector<string> MonsterData
     //cout << isTakeHit;
     //hitBox->printHitbox(" Enermy ");
     //player->hitBox->printHitbox(" player ");
-    
+    //cout << player->score << endl;
+    // 
+    // 
+    //Khi quái hồi sinh
+    if (_spawnTime == 990)
+    {
+        player->score = player->score + 100 + player->bonusScore;
+        player->bonusScore += 20;
+    }
+
+    if (_spawnTime < 0)
+    {
+
+        int temp = rand() % 11;
+        _spawnTime = RespawnTime;
+        health = 30;
+        isDead = false;
+        _dieTime = DieTime;
+        O_tranform->vector.x = spawnPoint[temp].x;
+        O_tranform->vector.y = spawnPoint[temp].y;
+    }
+
+
     // Khi quái tạch
     
-    if (health < 0)
+    if (health <= 0)
     {
+        _spawnTime -= dt;
         isDead = true;
         _dieTime -= dt;
-        //hitBox->setClip(-200, -200, 1, 1);
-        //hitBox->setHitBox(O_tranform->vector.x , O_tranform->vector.x, 0, 0, 20);
     }
     if (isDead && dir == 1 )
     {
@@ -438,6 +460,7 @@ void Enermy::updateEnermy(float dt , Knight* player , vector<string> MonsterData
         if (AttackTime == 1)
         {
             player->health -= 5;
+            if (player->health <= 0) player->health = 0;
             player->isTakeHit = true;
         }
         else
@@ -473,22 +496,22 @@ void Enermy::updateEnermy(float dt , Knight* player , vector<string> MonsterData
     hitBox->setHitBox(O_tranform->vector.x, O_tranform->vector.y, O_width, O_height,40);
     if (CollisionMap(hitBox->_hitBox , layerData1))
     {
-        //cout << "vacham";
         O_tranform->vector.y = LastSafePos.y;
     }
     
-    if (checkcollisionX(hitBox->_hitBox , layerData1) )
+    if (checkcollisionX(hitBox->_hitBox , layerData1) && !isDead  )
     {
         dir = dir * -1;
     }
-    if (checkEdge(hitBox->_hitBox) )
+    if (checkEdge(hitBox->_hitBox) && !isDead )
     {
         dir = dir * -1;
     }
     // Khi quái phát hiện nhân vật
-    if (abs(player->hitBox->_hitBox.y - hitBox->_hitBox.y) < 10 && !checkcollisionX(hitBox->_hitBox, layerData1) && !checkEdge(hitBox->_hitBox) && !isDead)
+    /*if (abs(player->hitBox->_hitBox.y - hitBox->_hitBox.y) < 5  && !isDead && !checkEdge(hitBox->_hitBox) && !checkcollisionX(hitBox->_hitBox, layerData1))
     {
-        if ((player->hitBox->_hitBox.x + player->hitBox->_hitBox.w / 2 - hitBox->_hitBox.x + hitBox->_hitBox.w) )
+        chase = true;
+        if ((player->hitBox->_hitBox.x + player->hitBox->_hitBox.w / 2 - hitBox->_hitBox.x + hitBox->_hitBox.w))
         {
             dir = -1;
         }
@@ -497,20 +520,24 @@ void Enermy::updateEnermy(float dt , Knight* player , vector<string> MonsterData
             dir = 1;
         }
     }
+    else chase = false;*/
+
+
     animation->UpdateAnimation();
 
     
 }
 
-void Enermy::drawEnermy(SDL_Renderer* ren, Animation* animation , Knight* player , int isTurnOnHitBox)
+void Enermy::drawEnermy(SDL_Renderer* ren, Animation* animation , Knight* player )
 {
     if ( abs(hitBox->_hitBox.x - player->hitBox->_hitBox.x) < 500 )
     animation->DrawAnimation(animation->id, O_tranform->vector.x, O_tranform->vector.y, O_width, O_height, animation->flip);
-    if (isTurnOnHitBox == 1) {
+    /*if (isTurnOnHitBox == 1) {
         TextureManage::GetInstance()->drawHitbox(&hitBox->_hitBox, ren);
         TextureManage::GetInstance()->drawHitbox(&hitBox->_attackHitBoxLeft, Game::GetInstance()->renderer);
         TextureManage::GetInstance()->drawHitbox(&hitBox->_attackHitBoxRight, Game::GetInstance()->renderer);
-    }
+    }*/
+    // Bật hitbox debug 
 }
 
 void Enermy::cleanEnermy(SDL_Texture* tex)

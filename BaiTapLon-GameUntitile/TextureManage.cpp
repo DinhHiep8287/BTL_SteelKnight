@@ -59,3 +59,17 @@ void TextureManage::drawFrame(string id, float x, float y, float width, float he
     SDL_Rect dstrect = { x - Camera::getInstance()->pos.x, y - Camera::getInstance()->pos.y , width , height };
     SDL_RenderCopyEx(Game::GetInstance()->renderer, _textureMap[id], &srcrect, &dstrect, 0, NULL, flip);
 }
+
+void TextureManage::loadTextureFromSurface(string id, SDL_Surface* surface)
+{
+    if (surface == nullptr)
+    {
+        cout << "loi surface ";
+    }
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(Game::GetInstance()->renderer, surface);
+    if (texture == nullptr)
+    {
+        SDL_Log(" Fail to load Texture from surface : ", SDL_GetError());
+    }
+    _textureMap[id] = texture;
+}
