@@ -1,6 +1,6 @@
 # Bài Tập Lớn - Đinh Tuấn Hiệp - 22028287
 
-** Game đã được build sẵn , chạy shortcut bên ngoài để trải nghiệm **
+**Game đã được build sẵn , chạy shortcut bên ngoài để trải nghiệm**
 
 * **Tên Game : STEEL KNIGHT**
 
