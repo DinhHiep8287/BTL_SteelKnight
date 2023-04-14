@@ -6,9 +6,9 @@
 
 * **Chủ đề** : RPG
 
-* ** Video Demo : https://youtu.be/e0FAA7iwoGE ** 
+* **Video Demo : https://youtu.be/e0FAA7iwoGE** 
 
-* ** Giới thiệu : ** : Chiến đấu với Quái vật để giành được nhiều điểm nhất có thể 
+* **Giới thiệu :** : Chiến đấu với Quái vật để giành được nhiều điểm nhất có thể 
                         
                         Di Chuyển : A - W - S - D
                         Tấn Công : J
@@ -29,6 +29,6 @@
   
   - Nhạc nền + EffectSound : https://svl.itch.io/rpg-music-pack-svl
   
-* **Map được custom bằng Tiled** : https://www.mapeditor.org/
+* **Map được custom bằng Tiled** : https://www.mapeditor.org/**
                  
 
