@@ -262,20 +262,20 @@ void Game::render()
     TextureManage::GetInstance()->draw("background_3", 0, 0, 4028, 800, SDL_FLIP_NONE, 0.7);
     TextureManage::GetInstance()->draw("background_4", 0, 50, 4028, 800, SDL_FLIP_NONE, 0.8);
     TextureManage::GetInstance()->draw("background_5", 200, 0, 4028, 800, SDL_FLIP_NONE, 0.9);
-    
+
 
     // Render level 
     _level->renderLevel(renderer);
 
     // Render Player
 
-    fullEnermy->drawFullEnermy(renderer , player );
-    player->drawObject(player->animation );
+    fullEnermy->drawFullEnermy(renderer, player);
+    player->drawObject(player->animation);
 
     // Heath Text + Heart Icon
     string heathStr = to_string(player->health);
     playerHeath.setText(heathStr);
-    playerHeath.loadRenderText(font, renderer , {255,51,51});
+    playerHeath.loadRenderText(font, renderer, { 255,51,51 });
     playerHeath.setRectPos(200, 20);
     playerHeath.renderText(renderer);
     SDL_Rect heartIconRect = { 120,20,60,60 };
@@ -284,16 +284,30 @@ void Game::render()
     string scoreStr = to_string(player->score);
     scoreStr = "Score : " + scoreStr;
     Score.setText(scoreStr);
-    Score.loadRenderText(font, renderer , {224,224,224});
+    Score.loadRenderText(font, renderer, { 224,224,224 });
     Score.setRectPos(600, 20);
     Score.renderText(renderer);
-
+    // GameOver 
+    if (player->isDead == true) {
+    string _GameOver1 = " GAME OVER ";
+    GameOver1.setText(_GameOver1);
+    GameOver1.loadRenderText(MenuFont, renderer, { 255,0,0 });
+    GameOver1.setRectPos(200, 200);
+    GameOver1.renderText(renderer);
+    string _GameOver = " Esc to Escape - Score : ";
+    _GameOver = _GameOver + to_string(player->score);
+    GameOver.setText(_GameOver);
+    GameOver.loadRenderText(font, renderer, { 255,0,0 });
+    GameOver.setRectPos(50, 300);
+    GameOver.renderText(renderer);
+    }
 
     SDL_RenderPresent(renderer );
 
     playerHeath.Free();
     Score.Free();
-    
+    GameOver.Free();
+    GameOver1.Free();
 }
 void Game::event()
 {

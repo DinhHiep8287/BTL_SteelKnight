@@ -13,6 +13,8 @@ public:
               TTF_Font* MenuFont;
               Text playerHeath;
               Text Score;
+              Text GameOver;
+              Text GameOver1;
               bool InMenu = true;
               Mix_Music* music = NULL;
               bool _isRunning = true;
